@@ -11,10 +11,12 @@
         body { background-color: var(--bg-dark); color: white; font-family: 'Inter', sans-serif; margin: 0; }
         .mono { font-family: 'JetBrains Mono', monospace; }
         .glass { background: rgba(2, 6, 9, 0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-        .equip-row { background: #0a0a0a; border: 1px solid #1a1a1a; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; align-items: center; padding: 1.5rem; margin-bottom: 8px; transition: 0.3s; }
+        .gama-label { font-size: 9px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.2em; color: var(--iberia-blue); margin-bottom: 6px; margin-left: 4px; display: block; }
+        .equip-row { background: #0a0a0a; border: 1px solid #1a1a1a; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; align-items: center; padding: 1.5rem; margin-bottom: 24px; transition: 0.3s; }
         .equip-row:hover { border-color: var(--iberia-blue); background: #0f172a; }
         .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 8px; background: #10b981; box-shadow: 0 0 10px #10b981; }
-        .btn-rent { background: var(--iberia-blue); font-size: 10px; font-weight: 800; padding: 10px 20px; text-transform: uppercase; border-radius: 2px; color: white; }
+        .btn-rent { background: var(--iberia-blue); font-size: 10px; font-weight: 800; padding: 10px 20px; text-transform: uppercase; border-radius: 2px; color: white; transition: 0.3s; }
+        .btn-rent:hover { transform: scale(1.05); box-shadow: 0 0 15px rgba(59, 130, 246, 0.5); }
     </style>
 </head>
 <body>
@@ -22,37 +24,62 @@
         <div class="flex justify-start"><a href="index.html" class="text-2xl font-black text-blue-500 mono">IBERIA-AI.COM</a></div>
         <nav class="hidden lg:flex justify-center space-x-10">
             <a href="index.html" class="text-[11px] font-bold uppercase text-gray-500 hover:text-white transition">Inicio</a>
-            <span class="text-[11px] font-bold uppercase text-blue-500 tracking-widest">Equipos disponibles</span>
+            <span class="text-[11px] font-bold uppercase text-blue-500 tracking-widest cursor-default">Equipos disponibles</span>
+            <a href="estadisticas.html" class="text-[11px] font-bold uppercase text-gray-500 hover:text-white transition">Estadísticas</a>
         </nav>
         <div class="flex justify-end"><button class="bg-blue-600 px-8 py-3 rounded-sm font-black text-[11px] uppercase text-white">Panel Cliente</button></div>
     </header>
 
     <main class="max-w-7xl mx-auto py-20 px-10">
-        <h1 class="text-4xl font-black uppercase mb-2">Elige tu<span class="text-blue-500"> Equipo</span></h1>
-        <p class="text-gray-500 mono text-xs uppercase mb-12 tracking-widest">Sede Central: A Coruña · Hardware Dedicado</p>
+        <h1 class="text-4xl font-black uppercase mb-2">Elige tu <span class="text-blue-500">Equipo</span></h1>
+        <p class="text-gray-500 mono text-xs uppercase mb-12 tracking-widest">Sede Central: A Coruña · Infraestructura de Alto Rendimiento</p>
 
         <div class="flex flex-col">
-            <div class="equip-row">
-                <div class="flex flex-col"><span class="text-white font-black text-lg">RTX 5090 x1</span><span class="text-gray-500 text-[10px] mono">ID: ES-LC-NODE-01</span></div>
-                <div class="text-center"><span class="bg-slate-800 px-2 py-1 text-[10px] rounded">24GB GDDR7</span></div>
-                <div class="text-center text-[10px] text-gray-400 font-bold uppercase">A Coruña (ES)</div>
-                <div class="text-center"><span class="status-dot"></span><span class="text-[10px] font-bold text-emerald-500 uppercase">Disponible</span></div>
-                <div class="flex flex-col items-end"><span class="text-white font-black text-xl">desde 9.90€/dia</span><button class="btn-rent mt-2">Alquilar</button></div>
+            
+            <div>
+                <span class="gama-label">Equipo Gama Ultra</span>
+                <div class="equip-row">
+                    <div class="flex flex-col"><span class="text-white font-black text-lg">RTX 5090 x1</span><span class="text-gray-500 text-[10px] mono">ID: ES-LC-ULTRA-01</span></div>
+                    <div class="text-center"><span class="bg-slate-800 px-2 py-1 text-[10px] rounded uppercase">32GB GDDR7</span></div>
+                    <div class="text-center text-[10px] text-gray-400 font-bold uppercase">A Coruña (ES)</div>
+                    <div class="text-center"><span class="status-dot"></span><span class="text-[10px] font-bold text-emerald-500 uppercase">Disponible</span></div>
+                    <div class="flex flex-col items-end"><span class="text-white font-black text-xl">9.90€/día</span><button class="btn-rent mt-2">Alquilar</button></div>
+                </div>
             </div>
-            <div class="equip-row">
-                <div class="flex flex-col"><span class="text-white font-black text-lg">RTX 5060ti x1</span><span class="text-gray-500 text-[10px] mono">ID: ES-LC-NODE-02</span></div>
-                <div class="text-center"><span class="bg-slate-800 px-2 py-1 text-[10px] rounded">16GB GDDR7</span></div>
-                <div class="text-center text-[10px] text-gray-400 font-bold uppercase">A Coruña (ES)</div>
-                <div class="text-center"><span class="status-dot"></span><span class="text-[10px] font-bold text-emerald-500 uppercase">Disponible</span></div>
-                <div class="flex flex-col items-end"><span class="text-white font-black text-xl">desde 5.90€/día</span><button class="btn-rent mt-2">Alquilar</button></div>
+
+            <div>
+                <span class="gama-label">Equipo Gama Alta</span>
+                <div class="equip-row">
+                    <div class="flex flex-col"><span class="text-white font-black text-lg">RTX 5060ti x1</span><span class="text-gray-500 text-[10px] mono">ID: ES-LC-ALTA-02</span></div>
+                    <div class="text-center"><span class="bg-slate-800 px-2 py-1 text-[10px] rounded uppercase">16GB GDDR7</span></div>
+                    <div class="text-center text-[10px] text-gray-400 font-bold uppercase">A Coruña (ES)</div>
+                    <div class="text-center"><span class="status-dot"></span><span class="text-[10px] font-bold text-emerald-500 uppercase">Disponible</span></div>
+                    <div class="flex flex-col items-end"><span class="text-white font-black text-xl">5.90€/día</span><button class="btn-rent mt-2">Alquilar</button></div>
+                </div>
             </div>
-            <div class="equip-row">
-                <div class="flex flex-col"><span class="text-white font-black text-lg">RTX 3070 x1</span><span class="text-gray-500 text-[10px] mono">ID: ES-LC-NODE-02</span></div>
-                <div class="text-center"><span class="bg-slate-800 px-2 py-1 text-[10px] rounded">8GB GDDR6</span></div>
-                <div class="text-center text-[10px] text-gray-400 font-bold uppercase">A Coruña (ES)</div>
-                <div class="text-center"><span class="status-dot"></span><span class="text-[10px] font-bold text-emerald-500 uppercase">Disponible</span></div>
-                <div class="flex flex-col items-end"><span class="text-white font-black text-xl">desde 3.90€/día</span><button class="btn-rent mt-2">Alquilar</button></div>
+
+            <div>
+                <span class="gama-label">Equipo Gama Media</span>
+                <div class="equip-row">
+                    <div class="flex flex-col"><span class="text-white font-black text-lg">RTX 3070 x1</span><span class="text-gray-500 text-[10px] mono">ID: ES-LC-MEDIA-03</span></div>
+                    <div class="text-center"><span class="bg-slate-800 px-2 py-1 text-[10px] rounded uppercase">8GB GDDR6</span></div>
+                    <div class="text-center text-[10px] text-gray-400 font-bold uppercase">A Coruña (ES)</div>
+                    <div class="text-center"><span class="status-dot"></span><span class="text-[10px] font-bold text-emerald-500 uppercase">Disponible</span></div>
+                    <div class="flex flex-col items-end"><span class="text-white font-black text-xl">3.90€/día</span><button class="btn-rent mt-2">Alquilar</button></div>
+                </div>
             </div>
+
+            <div>
+                <span class="gama-label">Equipo Gama Básica</span>
+                <div class="equip-row">
+                    <div class="flex flex-col"><span class="text-white font-black text-lg">GTX 1660 Super x1</span><span class="text-gray-500 text-[10px] mono">ID: ES-LC-BASIC-04</span></div>
+                    <div class="text-center"><span class="bg-slate-800 px-2 py-1 text-[10px] rounded uppercase">6GB GDDR6</span></div>
+                    <div class="text-center text-[10px] text-gray-400 font-bold uppercase">A Coruña (ES)</div>
+                    <div class="text-center"><span class="status-dot"></span><span class="text-[10px] font-bold text-emerald-500 uppercase">Disponible</span></div>
+                    <div class="flex flex-col items-end"><span class="text-white font-black text-xl">1.90€/día</span><button class="btn-rent mt-2">Alquilar</button></div>
+                </div>
+            </div>
+
         </div>
     </main>
 </body>
