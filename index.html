@@ -3,87 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IBERIA-AI.COM | Infraestructura de Renderizado IA de Alto Rendimiento</title>
+    <title>IBERIA-AI.COM | Infraestructura de Renderizado IA</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap');
         
-        :root { 
-            --iberia-blue: #3b82f6; 
-            --bg-dark: #020609; 
-        }
-
-        body { 
-            background-color: var(--bg-dark); 
-            color: white; 
-            font-family: 'Inter', sans-serif; 
-            margin: 0; 
-            width: 100vw;
-            overflow-x: hidden;
-        }
-
+        :root { --iberia-blue: #3b82f6; --bg-dark: #020609; }
+        body { background-color: var(--bg-dark); color: white; font-family: 'Inter', sans-serif; margin: 0; width: 100vw; overflow-x: hidden; }
         .mono { font-family: 'JetBrains Mono', monospace; }
 
-        /* --- BLOQUEO DE FONDO: MATRIX SUTIL --- */
-        #matrix-container { 
-            position: fixed; 
-            top: 0; 
-            left: 0; 
-            width: 100%; 
-            height: 100%; 
-            z-index: 1; 
-            pointer-events: none; 
-            overflow: hidden; 
-        }
-        
+        /* FONDO BLOQUEADO: MATRIX SEMÁNTICO */
+        #matrix-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; overflow: hidden; }
         .page-wrapper { position: relative; z-index: 10; width: 100%; }
 
-        /* --- ELEMENTOS UI --- */
-        .glass { 
-            background: rgba(2, 6, 9, 0.92); 
-            backdrop-filter: blur(12px); 
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05); 
-        }
+        .glass { background: rgba(2, 6, 9, 0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .hero-gradient { background: linear-gradient(to bottom, #ffffff 50%, var(--iberia-blue) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        .hero-gradient { 
-            background: linear-gradient(to bottom, #ffffff 50%, var(--iberia-blue) 100%); 
-            -webkit-background-clip: text; 
-            -webkit-text-fill-color: transparent; 
-        }
-        
-        /* Estándar Clore: Cards de alta densidad */
+        /* Cards centradas y alineadas */
         .clore-card { 
-            background: #0a0a0a; 
-            border: 1px solid #1a1a1a; 
-            padding: 2rem; 
-            border-radius: 4px; 
-            transition: 0.3s; 
-            min-height: 160px; /* Altura máxima estándar [cite: 1] */
+            background: #0a0a0a; border: 1px solid #1a1a1a; padding: 2rem; border-radius: 4px; 
+            transition: 0.3s; min-height: 160px; display: flex; flex-direction: column; align-items: center; text-align: center;
         }
-        .clore-card:hover { 
-            border-color: var(--iberia-blue); 
-            transform: translateY(-5px); 
-        }
+        .clore-card:hover { border-color: var(--iberia-blue); transform: translateY(-5px); }
 
-        .btn-iberia { 
-            background: var(--iberia-blue); 
-            font-weight: 800; 
-            font-size: 11px; 
-            padding: 1.25rem 3rem; 
-            text-transform: uppercase; 
-            letter-spacing: 0.2em; 
-            border-radius: 2px; 
-            color: white; 
-            transition: 0.3s; 
-        }
+        .btn-iberia { background: var(--iberia-blue); font-weight: 800; font-size: 11px; padding: 1.25rem 3rem; text-transform: uppercase; letter-spacing: 0.2em; border-radius: 2px; color: white; transition: 0.3s; }
         .btn-iberia:hover { box-shadow: 0 0 25px rgba(59, 130, 246, 0.5); }
         
-        section { padding: 100px 10%; }
-        
-        /* Scrollbar Técnica */
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-track { background: #020609; }
-        ::-webkit-scrollbar-thumb { background: var(--iberia-blue); }
+        section { padding: 100px 5%; }
     </style>
 </head>
 <body>
@@ -102,62 +48,52 @@
             <button class="bg-blue-600 px-8 py-3 rounded-sm font-black text-[11px] uppercase tracking-widest text-white">Contratar</button>
         </header>
 
-        <section class="h-[90vh] flex flex-col items-center justify-center text-center">
+        <section class="h-[85vh] flex flex-col items-center justify-center text-center">
             <h2 class="text-7xl font-black hero-gradient uppercase mb-8 leading-tight">Potencia de cómputo <br> de alto rendimiento</h2>
             <p class="text-gray-400 text-xl font-medium max-w-3xl mx-auto mb-16 uppercase tracking-[0.2em] mono leading-relaxed">
                 Alquilamos la potencia de equipos GPUs para IA y Renderizado <br> bajo cumplimiento normativo europeo.
             </p>
-            <div class="flex gap-6">
-                <button class="btn-iberia">Explorar Equipos disponibles</button>
-            </div>
+            <button class="btn-iberia">Explorar Equipos disponibles</button>
         </section>
 
         <section class="bg-[#020609]/90 relative z-20 border-t border-white/5">
-            <div class="max-w-7xl mx-auto">
+            <div class="max-w-7xl mx-auto flex flex-col items-center">
                 <div class="text-center mb-16">
                     <h2 class="text-4xl font-black uppercase tracking-tighter mb-4">El Estándar <span class="text-blue-500">Iberia-AI</span></h2>
                     <p class="text-gray-500 mono text-sm tracking-widest uppercase">Liderando el control de la infraestructura digital en España</p>
                 </div>
 
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
                     <div class="clore-card">
-                        <div class="flex items-center mb-4">
-                            <div class="w-10 h-10 bg-blue-600/20 rounded flex items-center justify-center mr-4">
-                                <span class="text-blue-500 font-bold">EU</span>
-                            </div>
-                            <h3 class="text-white font-black uppercase tracking-tight text-lg">Cumplimiento RGPD Real</h3>
+                        <div class="w-10 h-10 bg-blue-600/20 rounded flex items-center justify-center mb-4">
+                            <span class="text-blue-500 font-bold">EU</span>
                         </div>
-                        <p class="text-gray-400 text-sm leading-relaxed">Garantizamos que el procesamiento de datos ocurre bajo estricta normativa europea, auditando cada nodo para asegurar su privacidad.</p>
+                        <h3 class="text-white font-black uppercase tracking-tight text-lg mb-2">RGPD Real</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed">Procesamiento bajo estricta normativa europea y auditoría de nodos.</p>
                     </div>
 
                     <div class="clore-card">
-                        <div class="flex items-center mb-4">
-                            <div class="w-10 h-10 bg-blue-600/20 rounded flex items-center justify-center mr-4">
-                                <span class="text-blue-500 font-bold">€</span>
-                            </div>
-                            <h3 class="text-white font-black uppercase tracking-tight text-lg">Fiscalidad Española</h3>
+                        <div class="w-10 h-10 bg-blue-600/20 rounded flex items-center justify-center mb-4">
+                            <span class="text-blue-500 font-bold">€</span>
                         </div>
-                        <p class="text-gray-400 text-sm leading-relaxed">Emitimos facturas legales con IVA deducible en España, eliminando las barreras de las criptomonedas y las divisas extranjeras.</p>
+                        <h3 class="text-white font-black uppercase tracking-tight text-lg mb-2">Fiscalidad</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed">Facturas legales con IVA deducible en España, sin criptomonedas.</p>
                     </div>
 
                     <div class="clore-card">
-                        <div class="flex items-center mb-4">
-                            <div class="w-10 h-10 bg-blue-600/20 rounded flex items-center justify-center mr-4">
-                                <span class="text-blue-500 font-bold">ES</span>
-                            </div>
-                            <h3 class="text-white font-black uppercase tracking-tight text-lg">Nodos Locales</h3>
+                        <div class="w-10 h-10 bg-blue-600/20 rounded flex items-center justify-center mb-4">
+                            <span class="text-blue-500 font-bold">ES</span>
                         </div>
-                        <p class="text-gray-400 text-sm leading-relaxed">Infraestructura físicamente ubicada en España para ofrecer latencia mínima en flujos de trabajo de IA y Renderizado.</p>
+                        <h3 class="text-white font-black uppercase tracking-tight text-lg mb-2">Ubicación</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed">Hardware físicamente ubicado en España para latencia mínima.</p>
                     </div>
 
                     <div class="clore-card">
-                        <div class="flex items-center mb-4">
-                            <div class="w-10 h-10 bg-blue-600/20 rounded flex items-center justify-center mr-4">
-                                <span class="text-blue-500 font-bold">24/7</span>
-                            </div>
-                            <h3 class="text-white font-black uppercase tracking-tight text-lg">Autonomía Técnica</h3>
+                        <div class="w-10 h-10 bg-blue-600/20 rounded flex items-center justify-center mb-4">
+                            <span class="text-blue-500 font-bold">24/7</span>
                         </div>
-                        <p class="text-gray-400 text-sm leading-relaxed">Soporte humano en castellano para configurar sus modelos de IA sobre nuestra red de cómputo de alta densidad.</p>
+                        <h3 class="text-white font-black uppercase tracking-tight text-lg mb-2">Autonomía</h3>
+                        <p class="text-gray-400 text-xs leading-relaxed">Soporte humano experto para configurar modelos de IA complejos.</p>
                     </div>
                 </div>
             </div>
@@ -165,7 +101,6 @@
 
         <footer class="h-24 glass flex flex-col items-center justify-center text-[10px] font-black tracking-[0.5em] text-gray-600 uppercase">
             <div>© 2026 IBERIA-AI.COM | INFRAESTRUCTURA DE ALTO RENDIMIENTO</div>
-            <div class="mt-3 text-blue-900 tracking-widest">Autonomía Digital · Alto Rendimiento · Cumplimiento Normativo</div>
         </footer>
     </div>
 
@@ -174,7 +109,8 @@
         const ctx = canvas.getContext('2d');
         let width, height, columns, drops;
         const fontSize = 16;
-        const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZアァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピ'.split('');
+        const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+        const terms = ['IA', 'GPU', 'RENDER', 'CUDA', 'LLM', 'VRAM', 'NVIDIA', 'AMD', 'INTEL'];
 
         function init() {
             width = canvas.width = window.innerWidth;
@@ -184,20 +120,28 @@
         }
 
         function draw() {
-            ctx.fillStyle = 'rgba(2, 6, 9, 0.08)'; 
-            ctx.fillRect(0, 0, width, height);
-            ctx.fillStyle = 'rgba(59, 130, 246, 0.15)'; 
-            ctx.font = fontSize + 'px monospace';
+            ctx.fillStyle = 'rgba(2, 6, 9, 0.08)'; ctx.fillRect(0, 0, width, height);
+            
             for (let i = 0; i < drops.length; i++) {
-                const text = chars[Math.floor(Math.random() * chars.length)];
+                let text = chars[Math.floor(Math.random() * chars.length)];
+                let isTerm = false;
+
+                // Probabilidad de iluminar un término técnico
+                if (Math.random() > 0.995) {
+                    text = terms[Math.floor(Math.random() * terms.length)];
+                    ctx.fillStyle = '#ffffff'; ctx.font = `bold ${fontSize}px monospace`;
+                    isTerm = true;
+                } else {
+                    ctx.fillStyle = 'rgba(59, 130, 246, 0.15)'; ctx.font = `${fontSize}px monospace`;
+                }
+
                 ctx.fillText(text, i * fontSize, drops[i] * fontSize);
                 if (drops[i] * fontSize > height && Math.random() > 0.975) drops[i] = 0;
                 drops[i]++;
             }
         }
         window.addEventListener('resize', init);
-        init(); 
-        setInterval(draw, 45);
+        init(); setInterval(draw, 45);
     </script>
 </body>
 </html>
