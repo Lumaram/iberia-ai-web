@@ -3,74 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IBERIA-AI.COM | Infraestructura GPU de Alta Fidelidad</title>
+    <title>IBERIA-AI.COM</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #020609; color: white; margin: 0; overflow-x: hidden; }
-        .mono { font-family: 'JetBrains+Mono', monospace; }
-        .glass {
-            background: rgba(10, 15, 25, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 112, 243, 0.2);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.8);
-        }
-        .text-gradient {
-            background: linear-gradient(135deg, #ffffff 0%, #0070f3 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        #particles-js {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 0;
-        }
-        .content-wrapper { position: relative; z-index: 10; pointer-events: none; }
-        .content-wrapper a, .content-wrapper button { pointer-events: auto; }
-        .btn-primary {
-            background: #0070f3;
-            transition: all 0.3s ease;
-        }
-        .btn-primary:hover {
-            background: #0051ad;
-            transform: translateY(-2px);
-            box-shadow: 0 0 20px rgba(0, 112, 243, 0.4);
-        }
+        body { background-color: #020609; color: white; margin: 0; font-family: sans-serif; overflow-x: hidden; }
+        #particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; }
+        .content { position: relative; z-index: 10; pointer-events: none; }
+        .interactive { pointer-events: auto; }
+        .glass { background: rgba(10, 20, 40, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(0, 112, 243, 0.3); }
     </style>
 </head>
 <body>
-
     <div id="particles-js"></div>
 
-    <div class="content-wrapper min-h-screen flex flex-col p-4 md:p-10">
-        <header class="flex justify-between items-center mb-16 p-6 glass rounded-2xl">
-            <h1 class="text-2xl font-bold tracking-tighter mono text-gradient">IBERIA-AI.COM</h1>
-            <nav class="hidden md:flex space-x-8 text-sm font-medium text-gray-400">
-                <a href="#" class="hover:text-white transition">INFRAESTRUCTURA</a>
-                <a href="#" class="hover:text-white transition">NODOS</a>
-                <a href="#" class="hover:text-white transition">RENTABILIDAD</a>
-            </nav>
-            <button class="btn-primary text-white px-6 py-2 rounded-full text-sm font-bold">
-                ACCESO VIP
-            </button>
+    <div class="content min-h-screen flex flex-col p-6 md:p-12">
+        <header class="flex justify-between items-center p-6 glass rounded-2xl mb-12">
+            <h1 class="text-xl font-bold tracking-tighter text-blue-500">IBERIA-AI.COM</h1>
+            <button class="interactive bg-blue-600 px-6 py-2 rounded-full font-bold text-sm">ACCESO VIP</button>
         </header>
 
-        <main class="flex-grow flex flex-col items-center justify-center text-center max-w-5xl mx-auto">
-            <div class="inline-block px-4 py-1 border border-blue-500/30 rounded-full text-xs font-semibold text-blue-400 mb-6 tracking-widest uppercase">
-                Red de Cómputo Soberana Activa
-            </div>
-            <h2 class="text-5xl md:text-7xl font-bold mb-8 tracking-tight">
-                Alta Fidelidad de <span class="text-gradient">Cómputo IA</span>
-            </h2>
-            <p class="text-gray-400 text-lg md:text-xl mb-12 max-w-2xl leading-relaxed text-center">
-                Desplegamos y gestionamos nodos GPU de alto rendimiento. La oferta genera la demanda: conectamos potencia de hardware con proyectos de IA a escala global.
-            </p>
+        <main class="flex-grow flex flex-col items-center justify-center text-center">
+            <h2 class="text-5xl md:text-7xl font-extrabold mb-6">Alta Fidelidad de <span class="text-blue-500">Cómputo IA</span></h2>
+            <p class="text-gray-400 max-w-2xl mb-12 text-lg">La oferta genera la demanda. Conectamos potencia GPU con proyectos globales.</p>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl">
-                <div class="glass p-8 rounded-3xl text-left border-l-4 border-l-blue-500">
-                    <h3 class="text-xl font-bold mb-2">Para Renters</h3>
-                    <p class="text-gray-400 text-sm mb-6">Pon tus equipos a trabajar y maximiza tus beneficios pasivos hoy mismo
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
+                <div class="glass p-10 rounded-3xl text-left border-l-4 border-blue-500">
+                    <h3 class="text-2xl font-bold mb-4">Para Renters</h3>
+                    <p class="text-gray-400 mb-8">Alquila tus equipos y genera ingresos pasivos.</p>
+                    <button class="interactive w-full py-4 bg-white text-black font-bold rounded-xl">ALQUILAR EQUIPO</button>
+                </div>
+                <div class="glass p-10 rounded-3xl text-left border-l-4 border-gray-700">
+                    <h3 class="text-2xl font-bold mb-4">Para Proyectos</h3>
+                    <p class="text-gray-400 mb-8">Cómputo dedicado bajo jurisdicción segura.</p>
+                    <button class="interactive w-full py-4 border border-gray-700 font-bold rounded-xl">SOLICITAR CÓMPUTO</button>
+                </div>
+            </div>
+        </main>
+
+        <footer class="mt-12 text-center text-gray-600 text-xs tracking-widest uppercase">
+            © 2026 IBERIA-AI.COM · SOBERANÍA TECNOLÓGICA
+        </footer>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script>
+        window.onload = function() {
+            particlesJS("particles-js", {
+                "particles": {
+                    "number": { "value": 100 },
+                    "color": { "value": "#0070f3" },
+                    "shape": { "type": "circle" },
+                    "opacity": { "value": 0.5 },
+                    "size": { "value": 2 },
+                    "line_linked": { "enable": true, "distance": 150, "color": "#0070f3", "opacity": 0.4, "width": 1 },
+                    "move": { "enable": true, "speed": 2 }
+                },
+                "interactivity": {
+                    "events": { "onhover": { "enable": true, "mode": "grab" } }
+                }
+            });
+        };
+    </script>
+</body>
+</html>
