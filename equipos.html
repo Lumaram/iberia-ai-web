@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Equipos Disponibles | IBERIA-AI.COM</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap');
+        :root { --iberia-blue: #3b82f6; --bg-dark: #020609; }
+        body { background-color: var(--bg-dark); color: white; font-family: 'Inter', sans-serif; margin: 0; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .glass { background: rgba(2, 6, 9, 0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
+        .equip-row { background: #0a0a0a; border: 1px solid #1a1a1a; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr; align-items: center; padding: 1.5rem; margin-bottom: 8px; transition: 0.3s; }
+        .equip-row:hover { border-color: var(--iberia-blue); background: #0f172a; }
+        .status-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; margin-right: 8px; background: #10b981; box-shadow: 0 0 10px #10b981; }
+        .btn-rent { background: var(--iberia-blue); font-size: 10px; font-weight: 800; padding: 10px 20px; text-transform: uppercase; border-radius: 2px; color: white; }
+    </style>
+</head>
+<body>
+    <header class="h-20 grid grid-cols-3 items-center px-10 glass sticky top-0 z-50">
+        <div class="flex justify-start"><a href="index.html" class="text-2xl font-black text-blue-500 mono">IBERIA-AI.COM</a></div>
+        <nav class="hidden lg:flex justify-center space-x-10">
+            <a href="index.html" class="text-[11px] font-bold uppercase text-gray-500 hover:text-white transition">Inicio</a>
+            <span class="text-[11px] font-bold uppercase text-blue-500 tracking-widest">Equipos disponibles</span>
+        </nav>
+        <div class="flex justify-end"><button class="bg-blue-600 px-8 py-3 rounded-sm font-black text-[11px] uppercase text-white">Panel Cliente</button></div>
+    </header>
+
+    <main class="max-w-7xl mx-auto py-20 px-10">
+        <h1 class="text-4xl font-black uppercase mb-2">Marketplace <span class="text-blue-500">GPU</span></h1>
+        <p class="text-gray-500 mono text-xs uppercase mb-12 tracking-widest">Sede Central: A Coruña · Hardware Dedicado</p>
+
+        <div class="flex flex-col">
+            <div class="equip-row">
+                <div class="flex flex-col"><span class="text-white font-black text-lg">RTX 4090 x1</span><span class="text-gray-500 text-[10px] mono">ID: ES-LC-NODE-01</span></div>
+                <div class="text-center"><span class="bg-slate-800 px-2 py-1 text-[10px] rounded">24GB VRAM</span></div>
+                <div class="text-center text-[10px] text-gray-400 font-bold uppercase">A Coruña (ES)</div>
+                <div class="text-center"><span class="status-dot"></span><span class="text-[10px] font-bold text-emerald-500 uppercase">Disponible</span></div>
+                <div class="flex flex-col items-end"><span class="text-white font-black text-xl">0.45€</span><button class="btn-rent mt-2">Alquilar</button></div>
+            </div>
+            <div class="equip-row">
+                <div class="flex flex-col"><span class="text-white font-black text-lg">NVIDIA H100 x1</span><span class="text-gray-500 text-[10px] mono">ID: ES-LC-NODE-02</span></div>
+                <div class="text-center"><span class="bg-slate-800 px-2 py-1 text-[10px] rounded">80GB HBM3</span></div>
+                <div class="text-center text-[10px] text-gray-400 font-bold uppercase">A Coruña (ES)</div>
+                <div class="text-center"><span class="status-dot"></span><span class="text-[10px] font-bold text-emerald-500 uppercase">Disponible</span></div>
+                <div class="flex flex-col items-end"><span class="text-white font-black text-xl">2.10€</span><button class="btn-rent mt-2">Alquilar</button></div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
