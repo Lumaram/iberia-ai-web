@@ -19,17 +19,16 @@
         .glass { background: rgba(2, 6, 9, 0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
         .hero-gradient { background: linear-gradient(to bottom, #ffffff 50%, var(--iberia-blue) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        /* Estándar Clore: Cards de alta densidad  */
-        .clore-card { 
-            background: #0a0a0a; border: 1px solid #1a1a1a; padding: 2rem; border-radius: 4px; 
-            transition: 0.3s; min-height: 160px; display: flex; flex-direction: column; align-items: center; text-align: center;
-        }
-        .clore-card:hover { border-color: var(--iberia-blue); transform: translateY(-5px); }
+        /* Estándar Clore: Cards de alta densidad */
+        .info-card { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 2rem; border-radius: 4px; transition: 0.3s; min-height: 160px; text-align: center; display: flex; flex-direction: column; align-items: center; }
+        .info-card:hover { border-color: var(--iberia-blue); transform: translateY(-5px); }
 
         .btn-iberia { background: var(--iberia-blue); font-weight: 800; font-size: 11px; padding: 1.25rem 3rem; text-transform: uppercase; letter-spacing: 0.2em; border-radius: 2px; color: white; transition: 0.3s; }
         .btn-iberia:hover { box-shadow: 0 0 25px rgba(59, 130, 246, 0.5); }
         
-        section { padding: 100px 5%; }
+        section { padding: 80px 10%; }
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-thumb { background: var(--iberia-blue); }
     </style>
 </head>
 <body>
@@ -48,59 +47,67 @@
             <button class="bg-blue-600 px-8 py-3 rounded-sm font-black text-[11px] uppercase tracking-widest text-white">Contratar</button>
         </header>
 
-        <section class="h-[85vh] flex flex-col items-center justify-center text-center">
+        <section class="h-[80vh] flex flex-col items-center justify-center text-center">
             <h2 class="text-7xl font-black hero-gradient uppercase mb-8 leading-tight">Potencia de cómputo <br> de alto rendimiento</h2>
-            <p class="text-gray-400 text-xl font-medium max-w-3xl mx-auto mb-16 uppercase tracking-[0.2em] mono leading-relaxed">
+            <p class="text-gray-400 text-xl font-medium max-w-3xl mx-auto mb-12 uppercase tracking-[0.2em] mono leading-relaxed">
                 Alquilamos la potencia de equipos GPUs para IA y Renderizado <br> bajo cumplimiento normativo europeo.
             </p>
             <button class="btn-iberia">Explorar Equipos disponibles</button>
         </section>
 
-        <section class="bg-[#020609]/90 relative z-20 border-t border-white/5">
-            <div class="max-w-7xl mx-auto flex flex-col items-center">
-                <div class="text-center mb-16">
-                    <h2 class="text-4xl font-black uppercase tracking-tighter mb-4">El Estándar <span class="text-blue-500">Iberia-AI</span></h2>
-                    <p class="text-gray-500 mono text-sm tracking-widest uppercase">Liderando el control de la infraestructura digital en España</p>
+        <section class="bg-[#020609]/60 border-t border-white/5">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="info-card">
+                    <div class="text-blue-500 font-black mb-4 mono text-xl">01. CONEXIÓN</div>
+                    <h3 class="text-white font-bold uppercase mb-4 tracking-tighter text-lg">Monetiza tu Hardware</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Integra tus nodos GPU en nuestra red y genera ingresos en EUR con tu capacidad infrautilizada.</p>
                 </div>
+                <div class="info-card">
+                    <div class="text-blue-500 font-black mb-4 mono text-xl">02. CÓMPUTO</div>
+                    <h3 class="text-white font-bold uppercase mb-4 tracking-tighter text-lg">IA & Renderizado</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Suministramos potencia masiva para entrenamiento de LLMs y proyectos de renderizado 3D profesional.</p>
+                </div>
+                <div class="info-card">
+                    <div class="text-blue-500 font-black mb-4 mono text-xl">03. CONTROL</div>
+                    <h3 class="text-white font-bold uppercase mb-4 tracking-tighter text-lg">Autonomía Digital</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed">Infraestructura local auditada que garantiza la privacidad y el control total de sus procesos de IT.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="bg-[#020609]/90 relative z-20 border-t border-white/5">
+            <div class="max-w-7xl mx-auto flex flex-col items-center text-center">
+                <h2 class="text-4xl font-black uppercase tracking-tighter mb-4">El Estándar <span class="text-blue-500">Iberia-AI</span></h2>
+                <p class="text-gray-500 mono text-sm tracking-widest uppercase mb-16">Liderando el control de la infraestructura digital en España</p>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 w-full">
-                    <div class="clore-card">
-                        <div class="w-10 h-10 bg-blue-600/20 rounded flex items-center justify-center mb-4">
-                            <span class="text-blue-500 font-bold">EU</span>
-                        </div>
-                        <h3 class="text-white font-black uppercase tracking-tight text-lg mb-2">RGPD Real</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed">Procesamiento bajo estricta normativa europea y auditoría de nodos localizados.</p>
+                    <div class="info-card !min-h-[180px]">
+                        <div class="w-10 h-10 bg-blue-600/20 rounded flex items-center justify-center mb-4"><span class="text-blue-500 font-bold">EU</span></div>
+                        <h4 class="text-white font-black uppercase text-md mb-2">RGPD Real</h4>
+                        <p class="text-gray-400 text-xs leading-relaxed">Procesamiento auditado bajo normativa europea para seguridad de datos sensible.</p>
                     </div>
-
-                    <div class="clore-card">
-                        <div class="w-10 h-10 bg-blue-600/20 rounded flex items-center justify-center mb-4">
-                            <span class="text-blue-500 font-bold">€</span>
-                        </div>
-                        <h3 class="text-white font-black uppercase tracking-tight text-lg mb-2">Fiscalidad</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed">Facturas legales con IVA deducible en España, sin barreras de divisas extranjeras.</p>
+                    <div class="info-card !min-h-[180px]">
+                        <div class="w-10 h-10 bg-blue-600/20 rounded flex items-center justify-center mb-4"><span class="text-blue-500 font-bold">€</span></div>
+                        <h4 class="text-white font-black uppercase text-md mb-2">Fiscalidad</h4>
+                        <p class="text-gray-400 text-xs leading-relaxed">Facturación nacional con IVA deducible. Sin complicaciones de pagos en cripto.</p>
                     </div>
-
-                    <div class="clore-card">
-                        <div class="w-10 h-10 bg-blue-600/20 rounded flex items-center justify-center mb-4">
-                            <span class="text-blue-500 font-bold">ES</span>
-                        </div>
-                        <h3 class="text-white font-black uppercase tracking-tight text-lg mb-2">Ubicación</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed">Hardware físicamente ubicado en territorio nacional para garantizar latencia mínima.</p>
+                    <div class="info-card !min-h-[180px]">
+                        <div class="w-10 h-10 bg-blue-600/20 rounded flex items-center justify-center mb-4"><span class="text-blue-500 font-bold">ES</span></div>
+                        <h4 class="text-white font-black uppercase text-md mb-2">Ubicación</h4>
+                        <p class="text-gray-400 text-xs leading-relaxed">Nodos situados en España para latencia mínima y soberanía física del hardware.</p>
                     </div>
-
-                    <div class="clore-card">
-                        <div class="w-10 h-10 bg-blue-600/20 rounded flex items-center justify-center mb-4">
-                            <span class="text-blue-500 font-bold">24/7</span>
-                        </div>
-                        <h3 class="text-white font-black uppercase tracking-tight text-lg mb-2">Autonomía</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed">Soporte humano experto en castellano para el despliegue de modelos complejos.</p>
+                    <div class="info-card !min-h-[180px]">
+                        <div class="w-10 h-10 bg-blue-600/20 rounded flex items-center justify-center mb-4"><span class="text-blue-500 font-bold">24/7</span></div>
+                        <h4 class="text-white font-black uppercase text-md mb-2">Soporte</h4>
+                        <p class="text-gray-400 text-xs leading-relaxed">Asistencia experta en castellano para despliegues complejos de contenedores IA.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <footer class="h-24 glass flex flex-col items-center justify-center text-[10px] font-black tracking-[0.5em] text-gray-600 uppercase">
+        <footer class="h-24 glass flex flex-col items-center justify-center text-[10px] font-black tracking-[0.5em] text-gray-600 uppercase text-center px-4">
             <div>© 2026 IBERIA-AI.COM | INFRAESTRUCTURA DE ALTO RENDIMIENTO</div>
+            <div class="mt-2 text-blue-900">Autonomía Digital · Alto Rendimiento · Cumplimiento Normativo</div>
         </footer>
     </div>
 
@@ -110,11 +117,10 @@
         let width, height, columns, drops;
         const fontSize = 16;
         const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-        // Diccionario duplicado y diversificado
         const terms = [
-            'IA', 'GPU', 'RENDER', 'CUDA', 'LLM', 'VRAM', 'NVIDIA', 'AMD', 'INTEL', 
-            'TERAFLOPS', 'NODE', 'PYTORCH', 'TENSOR', 'CLUSTER', 'H100', 'A100', 
-            'RTX', 'LATENCY', 'BATCH', 'TRANSFORMER', 'SMI', 'DOCKER', 'UBUNTU'
+            'IA', 'GPU', 'RENDER', 'CUDA', 'LLM', 'VRAM', 'NVIDIA', 'AMD', 'H100', 'A100', 
+            'TERAFLOPS', 'NODE', 'PYTORCH', 'TENSOR', 'CLUSTER', 'RTX', 'LATENCY', 
+            'BATCH', 'DOCKER', 'UBUNTU', 'LINUX', 'SMI', 'STABLE-DIFFUSION', 'LORA'
         ];
 
         function init() {
@@ -126,18 +132,14 @@
 
         function draw() {
             ctx.fillStyle = 'rgba(2, 6, 9, 0.08)'; ctx.fillRect(0, 0, width, height);
-            
             for (let i = 0; i < drops.length; i++) {
                 let text = chars[Math.floor(Math.random() * chars.length)];
-                
-                // Frecuencia reducida a la mitad (0.9975 en lugar de 0.995)
-                if (Math.random() > 0.9975) {
+                if (Math.random() > 0.998) { // Frecuencia muy baja y sutil
                     text = terms[Math.floor(Math.random() * terms.length)];
                     ctx.fillStyle = '#ffffff'; ctx.font = `bold ${fontSize}px monospace`;
                 } else {
                     ctx.fillStyle = 'rgba(59, 130, 246, 0.15)'; ctx.font = `${fontSize}px monospace`;
                 }
-
                 ctx.fillText(text, i * fontSize, drops[i] * fontSize);
                 if (drops[i] * fontSize > height && Math.random() > 0.975) drops[i] = 0;
                 drops[i]++;
@@ -147,5 +149,4 @@
         init(); setInterval(draw, 45);
     </script>
 </body>
-</html>
 </html>
