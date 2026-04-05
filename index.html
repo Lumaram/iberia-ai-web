@@ -12,14 +12,14 @@
         body { background-color: var(--bg-dark); color: white; font-family: 'Inter', sans-serif; margin: 0; width: 100vw; overflow-x: hidden; }
         .mono { font-family: 'JetBrains Mono', monospace; }
 
-        /* FONDO BLOQUEADO: MATRIX SEMÁNTICO */
+        /* FONDO BLOQUEADO: MATRIX SEMÁNTICO AVANZADO */
         #matrix-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; overflow: hidden; }
         .page-wrapper { position: relative; z-index: 10; width: 100%; }
 
         .glass { background: rgba(2, 6, 9, 0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
         .hero-gradient { background: linear-gradient(to bottom, #ffffff 50%, var(--iberia-blue) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
-        /* Cards centradas y alineadas */
+        /* Estándar Clore: Cards de alta densidad  */
         .clore-card { 
             background: #0a0a0a; border: 1px solid #1a1a1a; padding: 2rem; border-radius: 4px; 
             transition: 0.3s; min-height: 160px; display: flex; flex-direction: column; align-items: center; text-align: center;
@@ -69,7 +69,7 @@
                             <span class="text-blue-500 font-bold">EU</span>
                         </div>
                         <h3 class="text-white font-black uppercase tracking-tight text-lg mb-2">RGPD Real</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed">Procesamiento bajo estricta normativa europea y auditoría de nodos.</p>
+                        <p class="text-gray-400 text-xs leading-relaxed">Procesamiento bajo estricta normativa europea y auditoría de nodos localizados.</p>
                     </div>
 
                     <div class="clore-card">
@@ -77,7 +77,7 @@
                             <span class="text-blue-500 font-bold">€</span>
                         </div>
                         <h3 class="text-white font-black uppercase tracking-tight text-lg mb-2">Fiscalidad</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed">Facturas legales con IVA deducible en España, sin criptomonedas.</p>
+                        <p class="text-gray-400 text-xs leading-relaxed">Facturas legales con IVA deducible en España, sin barreras de divisas extranjeras.</p>
                     </div>
 
                     <div class="clore-card">
@@ -85,7 +85,7 @@
                             <span class="text-blue-500 font-bold">ES</span>
                         </div>
                         <h3 class="text-white font-black uppercase tracking-tight text-lg mb-2">Ubicación</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed">Hardware físicamente ubicado en España para latencia mínima.</p>
+                        <p class="text-gray-400 text-xs leading-relaxed">Hardware físicamente ubicado en territorio nacional para garantizar latencia mínima.</p>
                     </div>
 
                     <div class="clore-card">
@@ -93,7 +93,7 @@
                             <span class="text-blue-500 font-bold">24/7</span>
                         </div>
                         <h3 class="text-white font-black uppercase tracking-tight text-lg mb-2">Autonomía</h3>
-                        <p class="text-gray-400 text-xs leading-relaxed">Soporte humano experto para configurar modelos de IA complejos.</p>
+                        <p class="text-gray-400 text-xs leading-relaxed">Soporte humano experto en castellano para el despliegue de modelos complejos.</p>
                     </div>
                 </div>
             </div>
@@ -110,7 +110,12 @@
         let width, height, columns, drops;
         const fontSize = 16;
         const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-        const terms = ['IA', 'GPU', 'RENDER', 'CUDA', 'LLM', 'VRAM', 'NVIDIA', 'AMD', 'INTEL'];
+        // Diccionario duplicado y diversificado
+        const terms = [
+            'IA', 'GPU', 'RENDER', 'CUDA', 'LLM', 'VRAM', 'NVIDIA', 'AMD', 'INTEL', 
+            'TERAFLOPS', 'NODE', 'PYTORCH', 'TENSOR', 'CLUSTER', 'H100', 'A100', 
+            'RTX', 'LATENCY', 'BATCH', 'TRANSFORMER', 'SMI', 'DOCKER', 'UBUNTU'
+        ];
 
         function init() {
             width = canvas.width = window.innerWidth;
@@ -124,13 +129,11 @@
             
             for (let i = 0; i < drops.length; i++) {
                 let text = chars[Math.floor(Math.random() * chars.length)];
-                let isTerm = false;
-
-                // Probabilidad de iluminar un término técnico
-                if (Math.random() > 0.995) {
+                
+                // Frecuencia reducida a la mitad (0.9975 en lugar de 0.995)
+                if (Math.random() > 0.9975) {
                     text = terms[Math.floor(Math.random() * terms.length)];
                     ctx.fillStyle = '#ffffff'; ctx.font = `bold ${fontSize}px monospace`;
-                    isTerm = true;
                 } else {
                     ctx.fillStyle = 'rgba(59, 130, 246, 0.15)'; ctx.font = `${fontSize}px monospace`;
                 }
@@ -144,4 +147,5 @@
         init(); setInterval(draw, 45);
     </script>
 </body>
+</html>
 </html>
