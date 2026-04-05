@@ -6,11 +6,16 @@
     <title>IBERIA-AI.COM</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        body { background-color: #020609; color: white; margin: 0; font-family: sans-serif; overflow-x: hidden; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono&display=swap');
+        body { background-color: #020609; color: white; margin: 0; font-family: 'Inter', sans-serif; overflow: hidden; }
         #particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; }
         .content { position: relative; z-index: 10; pointer-events: none; }
         .interactive { pointer-events: auto; }
         .glass { background: rgba(10, 20, 40, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(0, 112, 243, 0.3); }
+        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); backdrop-filter: blur(5px); }
+        .modal-content { margin: 10% auto; padding: 40px; width: 90%; max-width: 500px; border-radius: 24px; border: 1px solid rgba(0, 112, 243, 0.5); position: relative; }
+        input, select, textarea { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 12px; border-radius: 10px; width: 100%; margin-top: 8px; margin-bottom: 20px; outline: none; }
+        input:focus { border-color: #0070f3; }
     </style>
 </head>
 <body>
@@ -18,31 +23,63 @@
 
     <div class="content min-h-screen flex flex-col p-6 md:p-12">
         <header class="flex justify-between items-center p-6 glass rounded-2xl mb-12">
-            <h1 class="text-xl font-bold tracking-tighter text-blue-500">IBERIA-AI.COM</h1>
-            <button class="interactive bg-blue-600 px-6 py-2 rounded-full font-bold text-sm">ACCESO VIP</button>
+            <h1 class="text-xl font-bold tracking-tighter text-blue-500 font-mono">IBERIA-AI.COM</h1>
+            <button onclick="openModal('proyecto')" class="interactive bg-blue-600 px-6 py-2 rounded-full font-bold text-sm hover:bg-blue-700 transition">ACCESO VIP</button>
         </header>
 
         <main class="flex-grow flex flex-col items-center justify-center text-center">
-            <h2 class="text-5xl md:text-7xl font-extrabold mb-6">Alta Fidelidad de <span class="text-blue-500">Cómputo IA</span></h2>
-            <p class="text-gray-400 max-w-2xl mb-12 text-lg">La oferta genera la demanda. Conectamos potencia GPU con proyectos globales.</p>
+            <h2 class="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight">Alta Fidelidad de <span class="text-blue-500">Cómputo IA</span></h2>
+            <p class="text-gray-400 max-w-2xl mb-12 text-lg leading-relaxed">La oferta genera la demanda. Conectamos la potencia latente del hardware con proyectos globales de inteligencia artificial.</p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
                 <div class="glass p-10 rounded-3xl text-left border-l-4 border-blue-500">
                     <h3 class="text-2xl font-bold mb-4">Para Renters</h3>
-                    <p class="text-gray-400 mb-8">Alquila tus equipos y genera ingresos pasivos.</p>
-                    <button class="interactive w-full py-4 bg-white text-black font-bold rounded-xl">ALQUILAR EQUIPO</button>
+                    <p class="text-gray-400 mb-8 text-sm">Alquila tus nodos GPU y maximiza tus beneficios pasivos bajo nuestra infraestructura core.</p>
+                    <button onclick="openModal('renter')" class="interactive w-full py-4 bg-white text-black font-bold rounded-xl hover:bg-gray-200 transition tracking-wide">ALQUILAR EQUIPO</button>
                 </div>
                 <div class="glass p-10 rounded-3xl text-left border-l-4 border-gray-700">
                     <h3 class="text-2xl font-bold mb-4">Para Proyectos</h3>
-                    <p class="text-gray-400 mb-8">Cómputo dedicado bajo jurisdicción segura.</p>
-                    <button class="interactive w-full py-4 border border-gray-700 font-bold rounded-xl">SOLICITAR CÓMPUTO</button>
+                    <p class="text-gray-400 mb-8 text-sm">Accede a potencia de cómputo dedicada, escalable y con soporte técnico premium.</p>
+                    <button onclick="openModal('proyecto')" class="interactive w-full py-4 border border-gray-700 font-bold rounded-xl hover:bg-white/10 transition tracking-wide uppercase text-sm">Solicitar Cómputo</button>
                 </div>
             </div>
         </main>
 
-        <footer class="mt-12 text-center text-gray-600 text-xs tracking-widest uppercase">
-            © 2026 IBERIA-AI.COM · SOBERANÍA TECNOLÓGICA
+        <footer class="mt-12 text-center text-gray-600 text-[10px] tracking-[0.3em] uppercase">
+            © 2026 IBERIA-AI.COM · INFRAESTRUCTURA CORE · SOBERANÍA TECNOLÓGICA
         </footer>
+    </div>
+
+    <div id="contactModal" class="modal">
+        <div class="modal-content glass">
+            <button onclick="closeModal()" class="absolute top-4 right-6 text-gray-400 hover:text-white text-2xl">&times;</button>
+            <h2 id="modalTitle" class="text-3xl font-bold mb-2">Solicitar Acceso</h2>
+            <p id="modalDesc" class="text-gray-400 mb-8 text-sm">Déjanos tus datos y nos pondremos en contacto.</p>
+            
+            <form action="https://formspree.io/f/tu_id_aqui" method="POST" class="interactive">
+                <label class="text-xs uppercase tracking-widest text-blue-500 font-bold">Nombre Completo</label>
+                <input type="text" name="name" placeholder="Luis Martín" required>
+
+                <label class="text-xs uppercase tracking-widest text-blue-500 font-bold">Email de contacto</label>
+                <input type="email" name="email" placeholder="ejemplo@dominio.com" required>
+
+                <div id="renterFields">
+                    <label class="text-xs uppercase tracking-widest text-blue-500 font-bold">Hardware Disponible (GPU)</label>
+                    <input type="text" name="gpu" placeholder="Ej: 2x RTX 5060 Ti, 1x 3080 Ti">
+                </div>
+
+                <div id="proyectoFields" style="display:none;">
+                    <label class="text-xs uppercase tracking-widest text-blue-500 font-bold">Tipo de Proyecto</label>
+                    <select name="tipo_proyecto">
+                        <option value="entrenamiento">Entrenamiento de Modelos</option>
+                        <option value="inferencia">Inferencia / Hosting</option>
+                        <option value="render">Renderizado / Otros</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="w-full py-4 bg-blue-600 text-white font-bold rounded-xl mt-4 hover:bg-blue-700 transition">ENVIAR SOLICITUD</button>
+            </form>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
@@ -50,19 +87,42 @@
         window.onload = function() {
             particlesJS("particles-js", {
                 "particles": {
-                    "number": { "value": 100 },
+                    "number": { "value": 110, "density": { "enable": true, "value_area": 800 } },
                     "color": { "value": "#0070f3" },
-                    "shape": { "type": "circle" },
-                    "opacity": { "value": 0.5 },
-                    "size": { "value": 2 },
-                    "line_linked": { "enable": true, "distance": 150, "color": "#0070f3", "opacity": 0.4, "width": 1 },
-                    "move": { "enable": true, "speed": 2 }
+                    "opacity": { "value": 0.4 },
+                    "size": { "value": 2, "random": true },
+                    "line_linked": { "enable": true, "distance": 150, "color": "#0070f3", "opacity": 0.3, "width": 1 },
+                    "move": { "enable": true, "speed": 1.5, "random": true }
                 },
-                "interactivity": {
-                    "events": { "onhover": { "enable": true, "mode": "grab" } }
-                }
+                "interactivity": { "events": { "onhover": { "enable": true, "mode": "grab" } } }
             });
         };
+
+        function openModal(tipo) {
+            const modal = document.getElementById('contactModal');
+            const rFields = document.getElementById('renterFields');
+            const pFields = document.getElementById('proyectoFields');
+            const title = document.getElementById('modalTitle');
+            
+            modal.style.display = 'block';
+            if(tipo === 'renter') {
+                title.innerText = 'Unirse como Renter';
+                rFields.style.display = 'block';
+                pFields.style.display = 'none';
+            } else {
+                title.innerText = 'Solicitar Cómputo';
+                rFields.style.display = 'none';
+                pFields.style.display = 'block';
+            }
+        }
+
+        function closeModal() {
+            document.getElementById('contactModal').style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('contactModal')) closeModal();
+        }
     </script>
 </body>
 </html>
