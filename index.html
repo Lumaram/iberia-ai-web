@@ -36,16 +36,20 @@
     <div id="matrix-container"><canvas id="matrix-canvas"></canvas></div>
 
     <div class="page-wrapper">
-        <header class="h-20 flex items-center justify-between px-10 glass sticky top-0 z-50">
-            <div class="flex items-center space-x-12">
+        <header class="h-20 grid grid-cols-3 items-center px-10 glass sticky top-0 z-50">
+            <div class="flex justify-start">
                 <h1 class="text-2xl font-black tracking-tighter text-blue-500 mono">IBERIA-AI.COM</h1>
-                <nav class="hidden lg:flex space-x-8">
-                    <span class="text-[11px] font-bold uppercase text-blue-500 tracking-widest cursor-pointer">Inicio</span>
-                    <span class="text-[11px] font-bold uppercase text-gray-500 tracking-widest cursor-pointer hover:text-white transition">Equipos disponibles</span>
-                    <span class="text-[11px] font-bold uppercase text-gray-500 tracking-widest cursor-pointer hover:text-white transition">Estadísticas</span>
-                </nav>
             </div>
-            <button class="bg-blue-600 px-8 py-3 rounded-sm font-black text-[11px] uppercase tracking-widest text-white">Contratar potencia</button>
+
+            <nav class="hidden lg:flex justify-center space-x-10">
+                <span class="text-[11px] font-bold uppercase text-blue-500 tracking-widest cursor-pointer">Inicio</span>
+                <span class="text-[11px] font-bold uppercase text-gray-500 tracking-widest cursor-pointer hover:text-white transition">Equipos disponibles</span>
+                <span class="text-[11px] font-bold uppercase text-gray-500 tracking-widest cursor-pointer hover:text-white transition">Estadísticas</span>
+            </nav>
+
+            <div class="flex justify-end">
+                <button class="bg-blue-600 px-8 py-3 rounded-sm font-black text-[11px] uppercase tracking-widest text-white">Contratar potencia</button>
+            </div>
         </header>
 
         <section class="h-[85vh] text-center">
@@ -122,7 +126,6 @@
         const fontSize = 16;
         const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
         
-        // Diccionario ampliado: Tecnología + Ciudades > 50k España
         const terms = [
             'IA', 'GPU', 'RENDER', 'CUDA', 'VRAM', 'NVIDIA', 'H100', 'A100', 'DATACENTER', 'LATENCIA-BAJA', 'RGPD-OK',
             'MADRID', 'BARCELONA', 'VALENCIA', 'SEVILLA', 'ZARAGOZA', 'MALAGA', 'MURCIA', 'PALMA', 'LASPALMAS', 'BILBAO',
@@ -143,7 +146,7 @@
             for (let i = 0; i < drops.length; i++) {
                 let text = chars[Math.floor(Math.random() * chars.length)];
                 
-                if (Math.random() > 0.999) { // Frecuencia muy sutil
+                if (Math.random() > 0.999) {
                     text = terms[Math.floor(Math.random() * terms.length)];
                     ctx.fillStyle = '#ffffff'; 
                     ctx.font = `bold ${fontSize}px 'JetBrains Mono'`;
