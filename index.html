@@ -11,14 +11,14 @@
         :root { 
             --iberia-blue: #3b82f6; 
             --bg-dark: #020609; 
-            --pcb-trace: rgba(59, 130, 246, 0.08); /* Trazas sutiles */
-            --pcb-power: #3b82f6; /* Energía */
+            --pcb-trace: rgba(59, 130, 246, 0.05); /* Trazas sutiles y unidas */
+            --pcb-power: #3b82f6; /* Energía de la chispa única */
         }
 
         body { background-color: var(--bg-dark); color: white; font-family: 'Inter', sans-serif; margin: 0; overflow: hidden; }
         .mono { font-family: 'JetBrains Mono', monospace; }
 
-        /* Contenedor del PCB Dinámico */
+        /* Contenedor del PCB Dinámico Unificado */
         #pcb-container {
             position: fixed; width: 100%; height: 100%;
             top: 0; left: 0; z-index: 1;
@@ -26,7 +26,7 @@
         }
 
         .page-container { position: relative; z-index: 10; height: 100vh; display: flex; flex-direction: column; }
-        .glass { background: rgba(2, 6, 9, 0.9); backdrop-filter: blur(16px); border-bottom: 1px solid #1a1a1a; }
+        .glass { background: rgba(2, 6, 9, 0.92); backdrop-filter: blur(16px); border-bottom: 1px solid #1a1a1a; }
         
         /* Navegación */
         .nav-link { font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.15em; color: #444; transition: 0.3s; cursor: pointer; }
@@ -101,106 +101,109 @@
         const ctx = canvas.getContext('2d');
         let width, height;
 
-        const traces = [];
-        const energyNodes = [];
+        let unifiedTrace;
+        let singleSpark;
 
-        class Trace {
-            constructor() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.length = Math.random() * 200 + 100;
-                this.segments = [];
-                this.currentX = this.x;
-                this.currentY = this.y;
-                this.generateSegments();
-            }
-
-            generateSegments() {
-                const numSegments = Math.floor(Math.random() * 3) + 2;
-                for (let i = 0; i < numSegments; i++) {
-                    const direction = Math.random() > 0.5 ? 'H' : 'V';
-                    const segLen = this.length / numSegments;
-                    
-                    if (direction === 'H') {
-                        this.currentX += (Math.random() > 0.5 ? 1 : -1) * segLen;
-                    } else {
-                        this.currentY += (Math.random() > 0.5 ? 1 : -1) * segLen;
-                    }
-                    this.segments.push({ x: this.currentX, y: this.currentY });
-                }
+        class TraceSegment {
+            constructor(x, y, angle, length) {
+                this.startX = x;
+                this.startY = y;
+                this.endX = x + Math.cos(angle) * length;
+                this.endY = y + Math.sin(angle) * length;
+                this.children = [];
             }
 
             draw() {
                 ctx.beginPath();
-                ctx.moveTo(this.x, this.y);
+                ctx.moveTo(this.startX, this.startY);
+                ctx.lineTo(this.endX, this.endY);
+                ctx.strokeStyle = 'rgba(59, 130, 246, 0.05)'; // Trazas sutiles unidas
                 ctx.lineWidth = 1;
-                ctx.strokeStyle = 'rgba(59, 130, 246, 0.08)'; // Trazas sutiles
-                this.segments.forEach(seg => ctx.lineTo(seg.x, seg.y));
                 ctx.stroke();
-
-                // Nodos de conexión
-                ctx.fillStyle = 'rgba(59, 130, 246, 0.1)';
-                ctx.beginPath(); ctx.arc(this.x, this.y, 2, 0, Math.PI * 2); ctx.fill();
-                ctx.beginPath(); ctx.arc(this.currentX, this.currentY, 2, 0, Math.PI * 2); ctx.fill();
+                this.children.forEach(child => child.draw());
             }
         }
 
-        class EnergyPulse {
-            constructor() { this.reset(); }
+        class SingleSpark {
+            constructor(rootTrace) {
+                this.root = rootTrace;
+                this.currentSegment = rootTrace;
+                this.t = 0; // Progreso en el segmento actual
+                this.speed = 0.015; // Velocidad de la chispa única
+                this.size = 2.5;
+                this.reset();
+            }
+
             reset() {
-                this.trace = traces[Math.floor(Math.random() * traces.length)];
-                this.segmentIndex = 0;
+                this.currentSegment = this.root;
                 this.t = 0;
-                this.speed = Math.random() * 0.02 + 0.01;
-                this.alive = true;
-                this.size = Math.random() * 2 + 1;
             }
 
             update() {
-                if (!this.alive) return;
                 this.t += this.speed;
                 if (this.t >= 1) {
-                    this.t = 0;
-                    this.segmentIndex++;
-                    if (this.segmentIndex >= this.trace.segments.length) { this.alive = false; }
+                    if (this.currentSegment.children.length > 0) {
+                        // Elegir una rama aleatoria
+                        this.currentSegment = this.currentSegment.children[Math.floor(Math.random() * this.currentSegment.children.length)];
+                        this.t = 0;
+                    } else {
+                        // Fin del camino, reiniciar
+                        this.reset();
+                    }
                 }
             }
 
             draw() {
-                if (!this.alive) return;
-                const seg = this.trace.segments[this.segmentIndex];
-                const prev = this.segmentIndex === 0 ? this.trace : this.trace.segments[this.segmentIndex - 1];
-                
-                const x = prev.x + (seg.x - prev.x) * this.t;
-                const y = prev.y + (seg.y - prev.y) * this.t;
+                const x = this.currentSegment.startX + (this.currentSegment.endX - this.currentSegment.startX) * this.t;
+                const y = this.currentSegment.startY + (this.currentSegment.endY - this.currentSegment.startY) * this.t;
 
+                // Chispa principal
                 ctx.fillStyle = '#3b82f6';
-                ctx.shadowBlur = 10;
-                ctx.shadowColor = '#3b82f6';
                 ctx.beginPath();
                 ctx.arc(x, y, this.size, 0, Math.PI * 2);
                 ctx.fill();
-                ctx.shadowBlur = 0; // Reset shadow
+
+                // Estela (se logra mediante el renderizado acumulativo en animate())
             }
+        }
+
+        // Generar un circuito unificado tipo "árbol"
+        function generateUnifiedTrace(x, y, angle, length, depth) {
+            const trace = new TraceSegment(x, y, angle, length);
+            if (depth > 0) {
+                // Generar ramas con giros estrictos de 90º
+                const numBranches = Math.random() > 0.3 ? 2 : 1;
+                for (let i = 0; i < numBranches; i++) {
+                    const nextAngle = angle + (Math.random() > 0.5 ? Math.PI / 2 : -Math.PI / 2);
+                    const nextLen = length * 0.8;
+                    trace.children.push(generateUnifiedTrace(trace.endX, trace.endY, nextAngle, nextLen, depth - 1));
+                }
+            }
+            return trace;
         }
 
         function resize() {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
-            traces.length = 0;
-            energyNodes.length = 0;
-            for (let i = 0; i < 70; i++) { traces.push(new Trace()); }
-            for (let i = 0; i < 20; i++) { energyNodes.push(new EnergyPulse()); }
+            
+            // Generar circuito unificado desde el centro
+            unifiedTrace = generateUnifiedTrace(width / 2, height / 2, Math.random() * Math.PI * 2, 100, 6);
+            singleSpark = new SingleSpark(unifiedTrace);
         }
 
         function animate() {
-            ctx.clearRect(0, 0, width, height);
-            traces.forEach(trace => trace.draw());
-            energyNodes.forEach(pulse => {
-                pulse.update();
-                pulse.draw();
-                if (!pulse.alive) pulse.reset();
-            });
+            // Renderizado acumulativo para la estela (trail)
+            // Dibuja una capa negra semitransparente sobre el frame anterior
+            ctx.fillStyle = 'rgba(2, 6, 9, 0.1)'; // Controla la duración de la estela
+            ctx.fillRect(0, 0, width, height);
+
+            // Dibujar el circuito estático sutil
+            unifiedTrace.draw();
+
+            // Actualizar y dibujar la chispa única
+            singleSpark.update();
+            singleSpark.draw();
+
             requestAnimationFrame(animate);
         }
 
