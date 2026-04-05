@@ -11,19 +11,11 @@
         body { background-color: var(--bg-dark); color: white; font-family: 'Inter', sans-serif; margin: 0; }
         .mono { font-family: 'JetBrains Mono', monospace; }
         .glass { background: rgba(2, 6, 9, 0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
-        
         .gama-label { font-size: 9px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.2em; color: var(--iberia-blue); margin-bottom: 8px; margin-left: 4px; display: block; opacity: 0.8; }
-        
-        .equip-row { 
-            background: #0a0a0a; border: 1px solid #1a1a1a; 
-            display: grid; grid-template-columns: 1.5fr 2fr 1fr 1fr 1fr; 
-            align-items: center; padding: 1.75rem; margin-bottom: 32px; transition: 0.3s; 
-        }
+        .equip-row { background: #0a0a0a; border: 1px solid #1a1a1a; display: grid; grid-template-columns: 1.5fr 2fr 1fr 1fr 1fr; align-items: center; padding: 1.75rem; margin-bottom: 32px; transition: 0.3s; }
         .equip-row:hover { border-color: var(--iberia-blue); background: #0c121d; transform: translateY(-2px); }
-        
-        .tech-pill { background: #161b22; border: 1px solid #30363d; padding: 2px 8px; border-radius: 3px; font-size: 9px; color: #8b949e; font-family: 'JetBrains Mono', monospace; }
+        .tech-pill { background: #161b22; border: 1px solid #30363d; padding: 2px 8px; border-radius: 3px; font-size: 9px; color: #8b949e; font-family: 'JetBrains Mono', monospace; width: 40px; text-align: center; }
         .status-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; margin-right: 8px; background: #10b981; box-shadow: 0 0 12px #10b981; }
-        
         .btn-rent { background: var(--iberia-blue); font-size: 10px; font-weight: 800; padding: 12px 24px; text-transform: uppercase; border-radius: 2px; color: white; transition: 0.2s; }
         .btn-rent:hover { background: #2563eb; box-shadow: 0 0 20px rgba(59, 130, 246, 0.4); }
     </style>
@@ -51,69 +43,89 @@
                     <div class="flex flex-col">
                         <span class="text-white font-black text-xl tracking-tight">RTX 5090 x1</span>
                         <div class="flex items-center mt-2 space-x-2">
-                            <span class="bg-blue-500/10 text-blue-400 text-[10px] font-bold px-2 py-0.5 rounded border border-blue-500/20">32GB GDDR7</span>
-                            <span class="text-gray-600 text-[9px] mono uppercase">ID: LC-ULTRA-01</span>
+                            <span class="bg-blue-500/10 text-blue-400 text-[10px] font-bold px-2 py-0.5 rounded border border-blue-500/20 uppercase">32GB GDDR7</span>
+                            <span class="text-gray-600 text-[9px] mono uppercase italic">ID: LC-ULTRA-01</span>
                         </div>
                     </div>
-                    
                     <div class="grid grid-cols-2 gap-2 pr-8 border-l border-white/5 pl-8">
-                        <div class="flex items-center space-x-2">
-                            <span class="tech-pill">CPU</span>
-                            <span class="text-[10px] text-gray-300 font-semibold">R9 5950X (16C/32T)</span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span class="tech-pill">RAM</span>
-                            <span class="text-[10px] text-gray-300 font-semibold">64GB DDR4</span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span class="tech-pill">DISK</span>
-                            <span class="text-[10px] text-gray-300 font-semibold">2TB NVMe M.2</span>
-                        </div>
-                        <div class="flex items-center space-x-2">
-                            <span class="tech-pill">NET</span>
-                            <span class="text-[10px] text-blue-400 font-bold tracking-tighter">10GB LAN</span>
-                        </div>
+                        <div class="flex items-center space-x-2"><span class="tech-pill">CPU</span><span class="text-[10px] text-gray-300 font-semibold uppercase">R9 5950X (16C/32T)</span></div>
+                        <div class="flex items-center space-x-2"><span class="tech-pill">RAM</span><span class="text-[10px] text-gray-300 font-semibold uppercase">64GB DDR4</span></div>
+                        <div class="flex items-center space-x-2"><span class="tech-pill">DISK</span><span class="text-[10px] text-gray-300 font-semibold uppercase">2TB NVMe M.2</span></div>
+                        <div class="flex items-center space-x-2"><span class="tech-pill">NET</span><span class="text-[10px] text-blue-400 font-bold uppercase tracking-tighter">10GB LAN</span></div>
                     </div>
-
-                    <div class="text-center">
-                        <span class="text-[10px] text-gray-500 font-bold uppercase tracking-widest block">A Coruña</span>
-                        <span class="text-[9px] text-gray-700 mono">DATACENTER ES-01</span>
-                    </div>
-
-                    <div class="flex justify-center items-center">
-                        <span class="status-dot"></span>
-                        <span class="text-[10px] font-black text-emerald-500 uppercase tracking-tighter">Disponible</span>
-                    </div>
-
-                    <div class="flex flex-col items-end">
-                        <span class="text-white font-black text-2xl">9.90€<span class="text-[10px] text-gray-500 ml-1">/DÍA</span></span>
-                        <button class="btn-rent mt-3 w-full">Alquilar</button>
-                    </div>
+                    <div class="text-center"><span class="text-[10px] text-gray-500 font-bold uppercase tracking-widest block">A Coruña</span><span class="text-[9px] text-gray-700 mono uppercase">NODO CENTRAL</span></div>
+                    <div class="flex justify-center items-center"><span class="status-dot"></span><span class="text-[10px] font-black text-emerald-500 uppercase tracking-tighter">Disponible</span></div>
+                    <div class="flex flex-col items-end"><span class="text-white font-black text-2xl">9.90€<span class="text-[10px] text-gray-500 ml-1 uppercase">/DÍA</span></span><button class="btn-rent mt-3 w-full">Alquilar</button></div>
                 </div>
             </div>
 
             <div>
                 <span class="gama-label">Equipo Gama Alta</span>
-                <div class="equip-row opacity-80">
+                <div class="equip-row">
                     <div class="flex flex-col">
                         <span class="text-white font-black text-xl tracking-tight">RTX 5060ti x1</span>
-                        <span class="text-gray-600 text-[9px] mt-1 mono">ID: LC-ALTA-02</span>
+                        <div class="flex items-center mt-2 space-x-2">
+                            <span class="bg-blue-500/10 text-blue-400 text-[10px] font-bold px-2 py-0.5 rounded border border-blue-500/20 uppercase">16GB GDDR7</span>
+                            <span class="text-gray-600 text-[9px] mono uppercase italic">ID: LC-ALTA-02</span>
+                        </div>
                     </div>
-                    <div class="flex space-x-2 justify-center border-l border-white/5">
-                         <span class="tech-pill">16GB GDDR7</span>
-                         <span class="tech-pill">32GB RAM</span>
-                         <span class="tech-pill">1TB SSD</span>
+                    <div class="grid grid-cols-2 gap-2 pr-8 border-l border-white/5 pl-8">
+                        <div class="flex items-center space-x-2"><span class="tech-pill">CPU</span><span class="text-[10px] text-gray-300 font-semibold uppercase">i7-13700K (16C)</span></div>
+                        <div class="flex items-center space-x-2"><span class="tech-pill">RAM</span><span class="text-[10px] text-gray-300 font-semibold uppercase">32GB DDR5</span></div>
+                        <div class="flex items-center space-x-2"><span class="tech-pill">DISK</span><span class="text-[10px] text-gray-300 font-semibold uppercase">1TB NVMe M.2</span></div>
+                        <div class="flex items-center space-x-2"><span class="tech-pill">NET</span><span class="text-[10px] text-blue-400 font-bold uppercase tracking-tighter">1GB LAN</span></div>
                     </div>
-                    <div class="text-center text-[10px] text-gray-500 font-bold uppercase">A Coruña</div>
-                    <div class="flex justify-center items-center"><span class="status-dot"></span><span class="text-[10px] font-bold text-emerald-500 uppercase">Disponible</span></div>
-                    <div class="flex flex-col items-end">
-                        <span class="text-white font-black text-2xl">5.90€<span class="text-[10px] text-gray-500 ml-1">/DÍA</span></span>
-                        <button class="btn-rent mt-3">Alquilar</button>
-                    </div>
+                    <div class="text-center"><span class="text-[10px] text-gray-500 font-bold uppercase tracking-widest block">A Coruña</span><span class="text-[9px] text-gray-700 mono uppercase">ESTRELLA-02</span></div>
+                    <div class="flex justify-center items-center"><span class="status-dot"></span><span class="text-[10px] font-black text-emerald-500 uppercase tracking-tighter">Disponible</span></div>
+                    <div class="flex flex-col items-end"><span class="text-white font-black text-2xl">5.90€<span class="text-[10px] text-gray-500 ml-1 uppercase">/DÍA</span></span><button class="btn-rent mt-3 w-full">Alquilar</button></div>
                 </div>
             </div>
-            
+
+            <div>
+                <span class="gama-label">Equipo Gama Media</span>
+                <div class="equip-row">
+                    <div class="flex flex-col">
+                        <span class="text-white font-black text-xl tracking-tight">RTX 3070 x1</span>
+                        <div class="flex items-center mt-2 space-x-2">
+                            <span class="bg-blue-500/10 text-blue-400 text-[10px] font-bold px-2 py-0.5 rounded border border-blue-500/20 uppercase">8GB GDDR6</span>
+                            <span class="text-gray-600 text-[9px] mono uppercase italic">ID: LC-MEDIA-03</span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 pr-8 border-l border-white/5 pl-8">
+                        <div class="flex items-center space-x-2"><span class="tech-pill">CPU</span><span class="text-[10px] text-gray-300 font-semibold uppercase">i5-12600K</span></div>
+                        <div class="flex items-center space-x-2"><span class="tech-pill">RAM</span><span class="text-[10px] text-gray-300 font-semibold uppercase">16GB DDR4</span></div>
+                        <div class="flex items-center space-x-2"><span class="tech-pill">DISK</span><span class="text-[10px] text-gray-300 font-semibold uppercase">500GB SSD</span></div>
+                        <div class="flex items-center space-x-2"><span class="tech-pill">NET</span><span class="text-[10px] text-blue-400 font-bold uppercase tracking-tighter">1GB LAN</span></div>
+                    </div>
+                    <div class="text-center"><span class="text-[10px] text-gray-500 font-bold uppercase tracking-widest block">A Coruña</span><span class="text-[9px] text-gray-700 mono uppercase">CORUÑA-03</span></div>
+                    <div class="flex justify-center items-center"><span class="status-dot"></span><span class="text-[10px] font-black text-emerald-500 uppercase tracking-tighter">Disponible</span></div>
+                    <div class="flex flex-col items-end"><span class="text-white font-black text-2xl">3.90€<span class="text-[10px] text-gray-500 ml-1 uppercase">/DÍA</span></span><button class="btn-rent mt-3 w-full">Alquilar</button></div>
+                </div>
             </div>
+
+            <div>
+                <span class="gama-label">Equipo Gama Básica</span>
+                <div class="equip-row">
+                    <div class="flex flex-col">
+                        <span class="text-white font-black text-xl tracking-tight">GTX 1660 Super x1</span>
+                        <div class="flex items-center mt-2 space-x-2">
+                            <span class="bg-blue-500/10 text-blue-400 text-[10px] font-bold px-2 py-0.5 rounded border border-blue-500/20 uppercase">6GB GDDR6</span>
+                            <span class="text-gray-600 text-[9px] mono uppercase italic">ID: LC-BASIC-04</span>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 pr-8 border-l border-white/5 pl-8">
+                        <div class="flex items-center space-x-2"><span class="tech-pill">CPU</span><span class="text-[10px] text-gray-300 font-semibold uppercase">i3-12100</span></div>
+                        <div class="flex items-center space-x-2"><span class="tech-pill">RAM</span><span class="text-[10px] text-gray-300 font-semibold uppercase">16GB DDR4</span></div>
+                        <div class="flex items-center space-x-2"><span class="tech-pill">DISK</span><span class="text-[10px] text-gray-300 font-semibold uppercase">250GB SSD</span></div>
+                        <div class="flex items-center space-x-2"><span class="tech-pill">NET</span><span class="text-[10px] text-blue-400 font-bold uppercase tracking-tighter">1GB LAN</span></div>
+                    </div>
+                    <div class="text-center"><span class="text-[10px] text-gray-500 font-bold uppercase tracking-widest block">A Coruña</span><span class="text-[9px] text-gray-700 mono uppercase">NODE-BASIC</span></div>
+                    <div class="flex justify-center items-center"><span class="status-dot"></span><span class="text-[10px] font-black text-emerald-500 uppercase tracking-tighter">Disponible</span></div>
+                    <div class="flex flex-col items-end"><span class="text-white font-black text-2xl">1.90€<span class="text-[10px] text-gray-500 ml-1 uppercase">/DÍA</span></span><button class="btn-rent mt-3 w-full">Alquilar</button></div>
+                </div>
+            </div>
+
+        </div>
     </main>
 </body>
 </html>
