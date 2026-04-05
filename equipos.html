@@ -27,17 +27,17 @@
             border-radius: 4px; 
             color: white; 
             transition: 0.3s;
-            /* 4px derecha, 4px abajo, 0 desenfoque para el borde solido, color oscuro */
             box-shadow: 4px 4px 0px #1d4ed8, 10px 10px 20px -5px rgba(59, 130, 246, 0.3);
             letter-spacing: 0.05em;
+            cursor: pointer;
         }
         .btn-rent-pro:hover { 
-            transform: translate(-2px, -2px); /* Se mueve un poco arriba e izquierda al hover */
+            transform: translate(-2px, -2px);
             box-shadow: 6px 6px 0px #1d4ed8, 15px 15px 25px -5px rgba(59, 130, 246, 0.4);
             background: #4a8ff7;
         }
         .btn-rent-pro:active {
-            transform: translate(2px, 2px); /* Se "hunde" hacia la sombra */
+            transform: translate(2px, 2px);
             box-shadow: 2px 2px 0px #1d4ed8;
         }
     </style>
@@ -53,7 +53,7 @@
         <div class="flex justify-end"><button class="bg-blue-600 px-8 py-3 rounded-sm font-black text-[11px] uppercase text-white">Panel Cliente</button></div>
     </header>
 
-    <main class="max-w-7xl mx-auto py-20 px-10">
+    <main class="max-w-7xl mx-auto py-20 px-10 min-h-[70vh]">
         <h1 class="text-4xl font-black uppercase mb-2 tracking-tighter italic">Equipos <span class="text-blue-500"> Disponibles</span></h1>
         <p class="text-gray-500 mono text-xs uppercase mb-16 tracking-widest">Infraestructura Pro · A Coruña Node ES-01</p>
 
@@ -76,7 +76,6 @@
                     </div>
                     <div class="text-center"><span class="text-[10px] text-gray-500 font-bold uppercase tracking-widest block">A Coruña</span><span class="text-[9px] text-gray-700 mono uppercase italic">NODO-01</span></div>
                     <div class="flex justify-center items-center"><span class="status-dot"></span><span class="text-[10px] font-black text-emerald-500 uppercase">Online</span></div>
-                    
                     <div class="flex flex-col items-center">
                         <div class="flex items-baseline space-x-1 mb-3">
                             <span class="text-[9px] text-gray-500 uppercase font-black tracking-tighter">desde</span>
@@ -106,7 +105,6 @@
                     </div>
                     <div class="text-center"><span class="text-[10px] text-gray-500 font-bold uppercase tracking-widest block">A Coruña</span><span class="text-[9px] text-gray-700 mono uppercase italic">NODO-01</span></div>
                     <div class="flex justify-center items-center"><span class="status-dot"></span><span class="text-[10px] font-black text-emerald-500 uppercase">Online</span></div>
-                    
                     <div class="flex flex-col items-center">
                         <div class="flex items-baseline space-x-1 mb-3">
                             <span class="text-[9px] text-gray-500 uppercase font-black tracking-tighter">desde</span>
@@ -136,7 +134,6 @@
                     </div>
                     <div class="text-center"><span class="text-[10px] text-gray-500 font-bold uppercase tracking-widest block">A Coruña</span><span class="text-[9px] text-gray-700 mono uppercase italic">NODO-01</span></div>
                     <div class="flex justify-center items-center"><span class="status-dot"></span><span class="text-[10px] font-black text-emerald-500 uppercase">Online</span></div>
-                    
                     <div class="flex flex-col items-center">
                         <div class="flex items-baseline space-x-1 mb-3">
                             <span class="text-[9px] text-gray-500 uppercase font-black tracking-tighter">desde</span>
@@ -166,7 +163,6 @@
                     </div>
                     <div class="text-center"><span class="text-[10px] text-gray-500 font-bold uppercase tracking-widest block">A Coruña</span><span class="text-[9px] text-gray-700 mono uppercase italic">NODO-01</span></div>
                     <div class="flex justify-center items-center"><span class="status-dot"></span><span class="text-[10px] font-black text-emerald-500 uppercase">Online</span></div>
-                    
                     <div class="flex flex-col items-center">
                         <div class="flex items-baseline space-x-1 mb-3">
                             <span class="text-[9px] text-gray-500 uppercase font-black tracking-tighter">desde</span>
@@ -179,5 +175,38 @@
             </div>
         </div>
     </main>
+
+    <footer class="bg-[#020609]/95 border-t border-white/5 py-16 relative z-30">
+        <div class="max-w-7xl mx-auto px-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
+                <div class="flex flex-col items-center md:items-start">
+                    <h1 class="text-xl font-black tracking-tighter text-blue-500 mono mb-4">IBERIA-AI.COM</h1>
+                    <p class="text-gray-500 text-[10px] uppercase tracking-[0.2em] leading-relaxed">Centro de computación nacional <br> Infraestructura física en A Coruña, España.</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <h4 class="text-white font-bold text-[11px] uppercase tracking-[0.3em] mb-6">Soporte y Legal</h4>
+                    <nav class="flex flex-col space-y-3">
+                        <a href="mailto:info@iberia-ai.com" class="text-blue-500 hover:text-white text-[10px] uppercase tracking-widest transition mono">info@iberia-ai.com</a>
+                        <a href="aviso-legal.html" class="text-gray-500 hover:text-blue-500 text-[10px] uppercase tracking-widest transition mono">Aviso Legal</a>
+                        <a href="privacidad.html" class="text-gray-500 hover:text-blue-500 text-[10px] uppercase tracking-widest transition mono">Privacidad</a>
+                        <a href="condiciones-venta.html" class="text-gray-500 hover:text-blue-500 text-[10px] uppercase tracking-widest transition mono">Condiciones</a>
+                    </nav>
+                </div>
+                <div class="flex flex-col items-center md:items-end">
+                    <h4 class="text-white font-bold text-[11px] uppercase tracking-[0.3em] mb-6">Certificaciones</h4>
+                    <div class="flex space-x-4 mb-4">
+                        <div class="border border-white/10 px-3 py-1 text-[9px] text-gray-500 mono uppercase">RGPD OK</div>
+                        <div class="border border-white/10 px-3 py-1 text-[9px] text-gray-500 mono uppercase">GALICIA TECH</div>
+                    </div>
+                    <p class="text-gray-600 text-[9px] uppercase tracking-widest italic">Sede Central: A Coruña, España.</p>
+                </div>
+            </div>
+            <div class="mt-16 pt-8 border-t border-white/5 flex flex-col items-center">
+                <span class="text-[9px] font-black tracking-[0.5em] text-gray-700 uppercase text-center">
+                    © 2026 IBERIA-AI.COM | A CORUÑA · MADRID · BARCELONA · VALENCIA · SEVILLA · BILBAO
+                </span>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
