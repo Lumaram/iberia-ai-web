@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IBERIA AI | Infrastructure Core | Cómputo Soberano en España</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #030303; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .glass { 
+            background: rgba(10, 10, 10, 0.6); 
+            backdrop-filter: blur(12px); 
+            border: 1px solid rgba(0, 102, 255, 0.1); 
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+        .text-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, #a0a0a0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="text-white min-h-screen flex flex-col p-4 md:p-10">
+
+    <header class="flex justify-between items-center mb-16 md:mb-24 p-4 glass rounded-2xl">
+        <h1 class="text-2xl font-bold tracking-tighter text-white mono">
+            IBERIA<span class="text-blue-600">.AI</span> <span class="text-neutral-700 text-xs uppercase tracking-widest">Core</span>
+        </h1>
+        <nav class="flex space-x-2">
+            <span class="text-xs font-bold text-neutral-600 uppercase mono border border-neutral-800 px-3 py-1 rounded-full">A Coruña</span>
+            <span class="text-xs font-bold text-neutral-600 uppercase mono border border-neutral-800 px-3 py-1 rounded-full">España 🇪🇸</span>
+        </nav>
+    </header>
+
+    <main class="flex-grow flex flex-col items-center justify-center max-w-6xl mx-auto w-full">
+        <div class="grid md:grid-cols-12 gap-12 items-center">
+            
+            <div class="md:col-span-7 space-y-6 text-center md:text-left">
+                <div class="inline-flex items-center space-x-2 bg-blue-600/10 border border-blue-600/20 px-4 py-1.5 rounded-full">
+                    <div class="h-2 w-2 bg-blue-500 rounded-full animate-pulse"></div>
+                    <span class="text-xs font-bold text-blue-400 uppercase tracking-widest mono">Infraestructura Soberana Activa</span>
+                </div>
+                <h2 class="text-5xl md:text-6xl font-bold tracking-tighter text-gradient leading-tight">
+                    Alta Fidelidad de Cómputo IA en Territorio Nacional
+                </h2>
+                <p class="text-neutral-400 leading-relaxed text-lg max-w-2xl">
+                    Desplegamos nodos GPU dedicados con ubicación física en A Coruña. Ofrecemos cumplimiento estricto **RGPD**, facturación española simplificada y soporte técnico premium.
+                </p>
+            </div>
+
+            <div class="md:col-span-5 glass p-8 rounded-3xl w-full max-w-md mx-auto md:max-w-none shadow-2xl">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-white uppercase tracking-tight mono">Nodo-01</h3>
+                        <p class="text-neutral-500 text-sm">RTX 5060 Ti Instance</p>
+                    </div>
+                    <span class="px-3 py-1 rounded-full text-[10px] font-bold mono bg-green-500/10 text-green-400 border border-green-500/20">
+                        ● ONLINE
+                    </span>
+                </div>
+
+                <div class="space-y-4 mb-8">
+                    <div class="bg-black/30 p-4 rounded-xl border border-white/5">
+                        <p class="text-xs text-neutral-500 uppercase mono tracking-widest mb-1">Gpu Model</p>
+                        <p class="text-white font-semibold">NVIDIA RTX 5060 Ti</p>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="bg-black/30 p-4 rounded-xl border border-white/5">
+                            <p class="text-xs text-neutral-500 uppercase mono tracking-widest mb-1">Vram</p>
+                            <p class="text-white font-semibold">16GB GDDR6X</p>
+                        </div>
+                        <div class="bg-black/30 p-4 rounded-xl border border-white/5">
+                            <p class="text-xs text-neutral-500 uppercase mono tracking-widest mb-1">Jurisdicción</p>
+                            <p class="text-white font-semibold">ES 🇪🇸 (RGPD)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="w-full bg-white text-black font-bold py-4 rounded-xl hover:bg-blue-600 hover:text-white transition-all uppercase tracking-widest text-xs shadow-lg mono">
+                    Solicitar Acceso VIP
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="mt-24 md:mt-32 p-6 glass rounded-2xl text-center text-neutral-700 text-[10px] uppercase tracking-[0.5em] mono">
+        © 2026 IBERIA AI CLOUD SYSTEMS · SOBERANÍA TECNOLÓGICA ESPAÑOLA
+    </footer>
+
+</body>
+</html>
