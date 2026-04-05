@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Alquiler de GPUs para IA y Render en España | IBERIA-AI.COM</title>
-    <meta name="description" content="Centro de cómputo IA de alto rendimiento con sede en A Coruña. Alquiler directo de NVIDIA H100 y RTX 4090. Baja latencia, cumplimiento RGPD y facturación nacional.">
+    <meta name="description" content="Centro de cómputo IA de alto rendimiento con sede en A Coruña. Alquiler directo de NVIDIA H100 y RTX 4090. Baja latencia, cumplimiento RGPD y soporte local.">
     <meta name="keywords" content="Alquiler GPU España, Computación IA A Coruña, Renderizado 3D Galicia, Servidores GPU, NVIDIA H100 Alquiler, RGPD Cloud España">
     <link rel="canonical" href="https://iberia-ai.com/">
     
@@ -22,11 +22,17 @@
         "addressCountry": "ES"
       },
       "url": "https://iberia-ai.com",
+      "email": "info@iberia-ai.com",
       "offers": {
         "@type": "Offer",
         "itemOffered": "Alquiler de potencia de computación GPU"
       }
     }
+    </script>
+
+    <script type="text/javascript">
+      window.$crisp=[];window.CRISP_WEBSITE_ID="TU_ID_DE_CRISP"; // SUSTITUIR POR TU ID DE CRISP
+      (function(){d=document;s=d.createElement("script");s.src="https://client.crisp.chat/l.js";s.async=1;d.getElementsByTagName("head")[0].appendChild(s);})();
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -37,11 +43,10 @@
         body { background-color: var(--bg-dark); color: white; font-family: 'Inter', sans-serif; margin: 0; width: 100vw; overflow-x: hidden; scroll-behavior: smooth; }
         .mono { font-family: 'JetBrains Mono', monospace; }
 
-        /* FONDO MATRIX GEOLOCALIZADO BLOQUEADO */
+        /* FONDO MATRIX GEOLOCALIZADO */
         #matrix-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; overflow: hidden; }
         .page-wrapper { position: relative; z-index: 10; width: 100%; }
 
-        /* UI ELEMENTS */
         .glass { background: rgba(2, 6, 9, 0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
         .hero-gradient { background: linear-gradient(to bottom, #ffffff 50%, var(--iberia-blue) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         
@@ -51,7 +56,7 @@
         }
         .info-card:hover { border-color: var(--iberia-blue); transform: translateY(-5px); box-shadow: 0 10px 30px -15px rgba(59, 130, 246, 0.3); }
 
-        .btn-iberia { background: var(--iberia-blue); font-weight: 800; font-size: 11px; padding: 1.25rem 3rem; text-transform: uppercase; letter-spacing: 0.2em; border-radius: 2px; color: white; transition: 0.3s; }
+        .btn-iberia { background: var(--iberia-blue); font-weight: 800; font-size: 11px; padding: 1.25rem 3rem; text-transform: uppercase; letter-spacing: 0.2em; border-radius: 2px; color: white; transition: 0.3s; cursor: pointer; }
         .btn-iberia:hover { box-shadow: 0 0 25px rgba(59, 130, 246, 0.5); transform: scale(1.02); }
         
         section { padding: 100px 10%; display: flex; flex-direction: column; align-items: center; }
@@ -71,7 +76,7 @@
             </div>
 
             <nav class="hidden lg:flex justify-center space-x-10">
-                <span class="text-[11px] font-bold uppercase text-blue-500 tracking-widest cursor-pointer">Inicio</span>
+                <span class="text-[11px] font-bold uppercase text-blue-500 tracking-widest cursor-default">Inicio</span>
                 <a href="/equipos" class="text-[11px] font-bold uppercase text-gray-500 tracking-widest hover:text-white transition">Equipos disponibles</a>
                 <a href="/estadisticas" class="text-[11px] font-bold uppercase text-gray-500 tracking-widest hover:text-white transition">Estadísticas</a>
             </nav>
@@ -85,8 +90,8 @@
             <section class="h-[85vh] text-center">
                 <h2 class="text-7xl font-black hero-gradient uppercase mb-8 leading-[1.1]">Cómputo IA con <br> Latencia Cero</h2>
                 <p class="text-gray-400 text-xl font-medium max-w-3xl mb-12 uppercase tracking-[0.2em] mono leading-relaxed">
-                    Alquiler directo de equipos GPU propios operados en España. <br> 
-                    Máximo rendimiento bajo cumplimiento normativo y fiscal total.
+                    Infraestructura GPU propia operada en España. <br> 
+                    Sede Central en A Coruña. Cumplimiento normativo y soporte local.
                 </p>
                 <a href="/equipos" class="btn-iberia">Ver Equipos en Alquiler</a>
             </section>
@@ -96,17 +101,17 @@
                     <div class="info-card">
                         <div class="text-blue-500 font-black mb-4 mono text-xl">01. PROXIMIDAD</div>
                         <h3 class="text-white font-bold uppercase mb-4 tracking-tighter text-lg">Mínima Latencia</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Nodos físicos en España para una respuesta inmediata. Inferencia y renderizado de alto nivel desde el noroeste peninsular.</p>
+                        <p class="text-gray-500 text-sm leading-relaxed">Hardware físicamente en España. Inferencia y renderizado de alto nivel desde el noroeste peninsular.</p>
                     </div>
                     <div class="info-card">
                         <div class="text-blue-500 font-black mb-4 mono text-xl">02. SEGURIDAD</div>
                         <h3 class="text-white font-bold uppercase mb-4 tracking-tighter text-lg">Blindaje Normativo</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Cumplimiento RGPD y LSSI. Tus procesos permanecen bajo jurisdicción española y protección de datos europea.</p>
+                        <p class="text-gray-500 text-sm leading-relaxed">Cumplimiento RGPD. Tus procesos permanecen bajo jurisdicción española y protección de datos europea.</p>
                     </div>
                     <div class="info-card">
-                        <div class="text-blue-500 font-black mb-4 mono text-xl">03. CONTROL</div>
-                        <h3 class="text-white font-bold uppercase mb-4 tracking-tighter text-lg">Hardware Propio</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Gestión directa de la infraestructura. Soporte técnico especializado en castellano desde nuestra sede central.</p>
+                        <div class="text-blue-500 font-black mb-4 mono text-xl">03. SOPORTE</div>
+                        <h3 class="text-white font-bold uppercase mb-4 tracking-tighter text-lg">Contacto Directo</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed">Soporte técnico especializado en castellano. Escríbenos a <strong>info@iberia-ai.com</strong> o vía chat.</p>
                     </div>
                 </div>
             </section>
@@ -117,24 +122,24 @@
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
                     <div class="flex flex-col items-center md:items-start">
                         <h1 class="text-xl font-black tracking-tighter text-blue-500 mono mb-4">IBERIA-AI.COM</h1>
-                        <p class="text-gray-500 text-[10px] uppercase tracking-[0.2em] leading-relaxed">Centro de computación nacional <br> Infraestructura física en territorio español.</p>
+                        <p class="text-gray-500 text-[10px] uppercase tracking-[0.2em] leading-relaxed">Centro de computación nacional <br> Infraestructura física en A Coruña, España.</p>
                     </div>
                     <div class="flex flex-col items-center">
-                        <h4 class="text-white font-bold text-[11px] uppercase tracking-[0.3em] mb-6">Marco Legal</h4>
+                        <h4 class="text-white font-bold text-[11px] uppercase tracking-[0.3em] mb-6">Soporte y Legal</h4>
                         <nav class="flex flex-col space-y-3">
+                            <a href="mailto:info@iberia-ai.com" class="text-blue-500 hover:text-white text-[10px] uppercase tracking-widest transition mono">info@iberia-ai.com</a>
                             <a href="/aviso-legal" class="text-gray-500 hover:text-blue-500 text-[10px] uppercase tracking-widest transition mono">Aviso Legal</a>
-                            <a href="/privacidad" class="text-gray-500 hover:text-blue-500 text-[10px] uppercase tracking-widest transition mono">Política de Privacidad</a>
-                            <a href="/cookies" class="text-gray-500 hover:text-blue-500 text-[10px] uppercase tracking-widest transition mono">Política de Cookies</a>
-                            <a href="/condiciones-venta" class="text-gray-500 hover:text-blue-500 text-[10px] uppercase tracking-widest transition mono">Condiciones de Venta</a>
+                            <a href="/privacidad" class="text-gray-500 hover:text-blue-500 text-[10px] uppercase tracking-widest transition mono">Privacidad</a>
+                            <a href="/condiciones-venta" class="text-gray-500 hover:text-blue-500 text-[10px] uppercase tracking-widest transition mono">Condiciones</a>
                         </nav>
                     </div>
                     <div class="flex flex-col items-center md:items-end">
                         <h4 class="text-white font-bold text-[11px] uppercase tracking-[0.3em] mb-6">Certificaciones</h4>
                         <div class="flex space-x-4 mb-4">
-                            <div class="border border-white/10 px-3 py-1 text-[9px] text-gray-500 mono uppercase">RGPD Compliant</div>
-                            <div class="border border-white/10 px-3 py-1 text-[9px] text-gray-500 mono uppercase">LSSI-CE</div>
+                            <div class="border border-white/10 px-3 py-1 text-[9px] text-gray-500 mono uppercase">RGPD OK</div>
+                            <div class="border border-white/10 px-3 py-1 text-[9px] text-gray-500 mono uppercase">GALICIA TECH</div>
                         </div>
-                        <p class="text-gray-600 text-[9px] uppercase tracking-widest">Sede Central: A Coruña, España.</p>
+                        <p class="text-gray-600 text-[9px] uppercase tracking-widest italic">Sede Central: A Coruña, España.</p>
                     </div>
                 </div>
                 <div class="mt-16 pt-8 border-t border-white/5 flex flex-col items-center">
@@ -152,12 +157,7 @@
         let width, height, columns, drops;
         const fontSize = 16;
         const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-        
-        const terms = [
-            'IA', 'GPU', 'RENDER', 'CUDA', 'VRAM', 'NVIDIA', 'H100', 'A100', 'DATACENTER', 'LATENCIA-CERO',
-            'A CORUÑA', 'MADRID', 'BARCELONA', 'VALENCIA', 'SEVILLA', 'ZARAGOZA', 'MALAGA', 'MURCIA', 'PALMA', 'BILBAO',
-            'ALICANTE', 'VIGO', 'GIJON', 'LLM', 'RGPD', 'VALLADOLID', 'GRANADA', 'TENSOR', 'CLOUD', 'GALICIA-TECH'
-        ];
+        const terms = ['IA', 'GPU', 'RENDER', 'CUDA', 'VRAM', 'NVIDIA', 'H100', 'A100', 'DATACENTER', 'LATENCIA-CERO', 'A CORUÑA', 'MADRID', 'BARCELONA', 'BILBAO', 'VIGO', 'GIJON', 'LLM', 'RGPD', 'SOPORTE-DIRECTO'];
 
         function init() {
             width = canvas.width = window.innerWidth;
