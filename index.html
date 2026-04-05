@@ -3,130 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IBERIA-AI.COM | Infraestructura GPU Soberana</title>
+    <title>IBERIA-AI.COM | Infraestructura Soberana y Encriptada</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono&display=swap');
-        body { background-color: #020609; color: white; margin: 0; font-family: 'Inter', sans-serif; overflow-x: hidden; scroll-behavior: smooth; }
+        body { background-color: #020609; color: white; margin: 0; font-family: 'Inter', sans-serif; overflow: hidden; }
         .mono { font-family: 'JetBrains Mono', monospace; }
-        #particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; pointer-events: none; }
-        .content-layer { position: relative; z-index: 10; }
-        .glass { background: rgba(10, 20, 40, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(0, 112, 243, 0.2); }
-        .gpu-card { background: rgba(15, 25, 40, 0.4); border: 1px solid rgba(255,255,255,0.05); transition: all 0.2s; }
-        .gpu-card:hover { border-color: #0070f3; background: rgba(15, 25, 40, 0.7); }
-        .modal { display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); backdrop-filter: blur(8px); }
-        input, select { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; padding: 10px; border-radius: 8px; width: 100%; margin-bottom: 15px; outline: none; }
-        input:focus { border-color: #0070f3; }
-        .interactive { pointer-events: auto; }
+        #particles-js { position: fixed; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
+        .page-container { position: relative; z-index: 10; height: 100vh; display: flex; flex-col; }
+        .section { display: none; flex-grow: 1; padding: 40px; overflow-y: auto; }
+        .section.active { display: block; }
+        .glass { background: rgba(10, 20, 40, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.05); }
+        .card { background: rgba(15, 25, 40, 0.4); border: 1px solid rgba(0, 112, 243, 0.1); transition: all 0.2s; border-radius: 16px; padding: 24px; }
+        .nav-link { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #94a3b8; transition: color 0.2s; cursor: pointer; }
+        .nav-link:hover, .nav-link.active { color: #3b82f6; }
     </style>
 </head>
 <body>
     <div id="particles-js"></div>
 
-    <div class="content-layer">
-        <header class="h-20 flex items-center justify-between px-8 glass sticky top-0 z-50 mx-4 mt-4 rounded-2xl">
-            <h1 class="text-xl font-black tracking-tighter text-blue-500 mono">IBERIA-AI.COM</h1>
-            <nav class="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-widest text-gray-400">
-                <a href="#home" class="hover:text-white transition">Inicio</a>
-                <a href="#marketplace" class="hover:text-white transition">Marketplace</a>
-                <a href="#" class="hover:text-white transition">Soporte</a>
-            </nav>
-            <button onclick="openModal('proyecto')" class="interactive bg-blue-600 px-6 py-2 rounded-full font-bold text-xs hover:bg-blue-700 transition">ACCESO VIP</button>
+    <div class="page-container flex flex-col">
+        <header class="h-20 flex items-center justify-between px-10 glass shrink-0 border-b border-white/5">
+            <div class="flex items-center space-x-12">
+                <h1 class="text-xl font-black tracking-tighter text-blue-500 mono cursor-pointer" onclick="showSection('home')">IBERIA-AI.COM</h1>
+                <nav class="hidden lg:flex space-x-8">
+                    <span class="nav-link" onclick="showSection('home')">Inicio</span>
+                    <span class="nav-link" onclick="showSection('marketplace')">Marketplace</span>
+                    <span class="nav-link" onclick="showSection('stats')">Estadísticas</span>
+                    <span class="nav-link" onclick="showSection('whitepaper')">White Paper</span>
+                </nav>
+            </div>
+            <div class="flex items-center space-x-4">
+                <button class="text-xs font-bold text-gray-400 hover:text-white transition">LOGIN</button>
+                <button class="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-lg font-bold text-xs transition uppercase tracking-widest">Registrarse</button>
+            </div>
         </header>
 
-        <section id="home" class="min-h-screen flex flex-col items-center justify-center text-center px-6">
-            <div class="inline-block px-4 py-1 border border-blue-500/30 rounded-full text-[10px] font-bold text-blue-400 mb-6 tracking-[0.3em] uppercase">
-                Red de Cómputo Soberana Activa
-            </div>
-            <h2 class="text-5xl md:text-8xl font-black mb-6 tracking-tighter">Alta Fidelidad de <span class="text-blue-500">Cómputo IA</span></h2>
-            <p class="text-gray-400 max-w-2xl mb-12 text-lg leading-relaxed">La oferta genera la demanda. Conectamos potencia GPU estratégica con proyectos globales bajo jurisdicción segura.</p>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-4xl">
-                <div class="glass p-10 rounded-3xl text-left border-l-4 border-blue-500">
-                    <h3 class="text-2xl font-bold mb-4">Para Renters</h3>
-                    <p class="text-gray-400 mb-8 text-sm leading-relaxed text-center">Alquila tus nodos GPU y maximiza tus beneficios pasivos hoy mismo.</p>
-                    <button onclick="openModal('renter')" class="interactive w-full py-4 bg-white text-black font-bold rounded-xl hover:bg-gray-200 transition">ALQUILAR MI EQUIPO</button>
+        <main id="home" class="section active">
+            <div class="max-w-5xl mx-auto flex flex-col items-center justify-center min-h-[70vh] text-center">
+                <div class="px-4 py-1 border border-blue-500/30 rounded text-[10px] font-bold text-blue-400 mb-8 tracking-[0.4em] uppercase bg-blue-500/5">
+                    Infraestructura Nacional Encriptada
                 </div>
-                <div onclick="document.getElementById('marketplace').scrollIntoView()" class="interactive glass p-10 rounded-3xl text-left border-l-4 border-gray-700 cursor-pointer hover:border-blue-500 transition">
-                    <h3 class="text-2xl font-bold mb-4">Para Proyectos</h3>
-                    <p class="text-gray-400 mb-8 text-sm leading-relaxed text-center">Accede a potencia de cómputo dedicada sin latencia y con facturación española.</p>
-                    <button class="w-full py-4 border border-gray-700 font-bold rounded-xl hover:bg-white/10 transition uppercase text-xs tracking-widest">Ver Marketplace</button>
+                <h2 class="text-6xl md:text-8xl font-black mb-8 tracking-tighter leading-none">Cómputo con <br><span class="text-blue-500">Soberanía Jurídica</span></h2>
+                <p class="text-gray-400 max-w-3xl mb-12 text-xl leading-relaxed">
+                    Garantizamos que sus datos nunca abandonan territorio nacional. Nodos GPU de alta fidelidad bajo <b>estricto cumplimiento RGPD</b> y encriptación de grado militar.
+                </p>
+                <div class="flex gap-4">
+                    <button onclick="showSection('marketplace')" class="bg-white text-black px-10 py-4 rounded-xl font-bold hover:bg-gray-200 transition">Explorar Marketplace</button>
+                    <button onclick="showSection('whitepaper')" class="border border-white/10 px-10 py-4 rounded-xl font-bold hover:bg-white/5 transition">Ver Seguridad Técnica</button>
                 </div>
             </div>
-        </section>
+        </main>
 
-        <section id="marketplace" class="min-h-screen bg-[#050a0f]/80 py-20 px-4 md:px-10 border-t border-white/5">
-            <div class="flex flex-col lg:flex-row gap-10">
-                <aside class="w-full lg:w-72 space-y-8">
-                    <h3 class="text-xs font-bold text-blue-500 uppercase tracking-[0.2em] mb-6">Filtros Avanzados</h3>
+        <main id="marketplace" class="section">
+            <div class="max-w-6xl mx-auto py-10">
+                <div class="flex justify-between items-end mb-12">
                     <div>
-                        <label class="text-[10px] text-gray-500 uppercase font-bold mb-2 block">Modelo GPU</label>
-                        <select class="interactive">
-                            <option>Cualquiera</option>
-                            <option>RTX 5060 Ti</option>
-                            <option>RTX 3080 Ti</option>
-                        </select>
+                        <h2 class="text-3xl font-bold mb-2 tracking-tight">Nodos Disponibles</h2>
+                        <p class="text-gray-500 text-sm">Tarifas optimizadas. Facturación española con IVA deducible.</p>
                     </div>
-                    <div>
-                        <label class="text-[10px] text-gray-500 uppercase font-bold mb-2 block">Jurisdicción</label>
-                        <div class="bg-gray-900/50 p-3 rounded-lg border border-white/5 text-sm">España 🇪🇸 (RGPD OK)</div>
+                    <div class="bg-green-500/10 text-green-400 px-4 py-2 rounded border border-green-500/20 text-xs font-bold">
+                        JURISDICCIÓN: ESPAÑA 🇪🇸
                     </div>
-                </aside>
-
-                <div class="flex-1 space-y-4">
-                    <div class="flex justify-between items-center mb-6">
-                        <h2 class="text-2xl font-bold tracking-tight">Nodos Disponibles</h2>
-                        <span class="text-[10px] mono text-gray-500">MOSTRANDO 3 EQUIPOS</span>
-                    </div>
-
-                    <div class="gpu-card p-6 rounded-2xl flex flex-col md:flex-row justify-between items-center gap-6">
-                        <div class="flex-1">
-                            <div class="flex items-center space-x-3 mb-2">
-                                <span class="px-2 py-1 bg-green-500/10 text-green-400 text-[9px] font-bold rounded">ONLINE</span>
-                                <span class="text-[10px] text-gray-500 mono">ID: 5060TI-LUIS</span>
+                </div>
+                
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="card flex justify-between items-center">
+                        <div>
+                            <div class="flex items-center space-x-2 mb-2">
+                                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                                <span class="text-[10px] font-bold text-gray-500 mono uppercase">Encrypted Instance · ID: 5060TI-CORE</span>
                             </div>
-                            <h4 class="text-xl font-bold">NVIDIA RTX 5060 Ti</h4>
-                            <p class="text-xs text-gray-400 mt-1">16GB VRAM · 64GB RAM · RYZEN 5 · ESPAÑA</p>
+                            <h4 class="text-xl font-bold">NVIDIA RTX 5060 Ti · <span class="text-blue-500">16GB VRAM</span></h4>
+                            <p class="text-xs text-gray-400 mt-1 uppercase tracking-widest">Ryzen 5 · 64GB RAM · Ubicación: Madrid/A Coruña Hub</p>
                         </div>
                         <div class="text-right">
-                            <span class="block text-2xl font-black tracking-tighter">0,85€<span class="text-sm font-normal text-gray-500">/día</span></span>
-                            <button onclick="openModal('proyecto')" class="interactive mt-2 bg-blue-600 px-6 py-2 rounded-lg font-bold text-xs uppercase">Alquilar</button>
-                        </div>
-                    </div>
-
-                    <div class="gpu-card p-6 rounded-2xl flex flex-col md:flex-row justify-between items-center gap-6 opacity-60">
-                        <div class="flex-1">
-                            <div class="flex items-center space-x-3 mb-2">
-                                <span class="px-2 py-1 bg-blue-500/10 text-blue-400 text-[9px] font-bold rounded">EN USO</span>
-                            </div>
-                            <h4 class="text-xl font-bold">NVIDIA RTX 3080 Ti</h4>
-                            <p class="text-xs text-gray-400 mt-1">12GB VRAM · 16GB RAM · INTEL I5 · ESPAÑA</p>
-                        </div>
-                        <div class="text-right">
-                            <span class="block text-2xl font-black tracking-tighter">1,20€<span class="text-sm font-normal text-gray-500">/día</span></span>
-                            <button disabled class="mt-2 bg-gray-800 text-gray-500 px-6 py-2 rounded-lg font-bold text-[10px] uppercase">Rented</button>
+                            <span class="block text-3xl font-black">0,85€<span class="text-sm font-normal text-gray-500">/día</span></span>
+                            <button class="bg-blue-600 px-8 py-3 rounded-lg font-bold text-xs uppercase mt-3 w-full">Alquilar</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </main>
 
-        <footer class="py-10 text-center border-t border-white/5">
-            <p class="text-[10px] mono text-gray-600 tracking-[0.4em] uppercase">© 2026 IBERIA-AI.COM · SOBERANÍA TECNOLÓGICA</p>
+        <main id="stats" class="section">
+            <div class="max-w-6xl mx-auto py-10">
+                <h2 class="text-3xl font-bold mb-10 tracking-tight">Estadísticas de Red en Tiempo Real</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="card"><p class="text-gray-500 text-xs mb-2">UPTIME GLOBAL</p><p class="text-4xl font-black text-blue-500">99.98%</p></div>
+                    <div class="card"><p class="text-gray-500 text-xs mb-2">POTENCIA TOTAL VRAM</p><p class="text-4xl font-black text-blue-500">128 GB</p></div>
+                    <div class="card"><p class="text-gray-500 text-xs mb-2">TIEMPO MEDIO RESPUESTA</p><p class="text-4xl font-black text-blue-500">12ms</p></div>
+                </div>
+            </div>
+        </main>
+
+        <main id="whitepaper" class="section">
+            <div class="max-w-4xl mx-auto py-10">
+                <h2 class="text-3xl font-bold mb-6 tracking-tight text-blue-500">Seguridad Jurídica y Técnica</h2>
+                <div class="prose prose-invert max-w-none space-y-8">
+                    <div class="card">
+                        <h3 class="text-xl font-bold mb-4">1. Localización Física</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">A diferencia de los proveedores de nube pública tradicionales, todos nuestros servidores están localizados físicamente en España. Esto garantiza que cualquier dato procesado cae bajo la legislación española y el marco del RGPD europeo.</p>
+                    </div>
+                    <div class="card">
+                        <h3 class="text-xl font-bold mb-4">2. Encriptación End-to-End</h3>
+                        <p class="text-gray-400 text-sm leading-relaxed">Utilizamos protocolos de aislamiento de hardware y encriptación de discos para asegurar que el propietario del nodo nunca tenga acceso a los datos procesados en la instancia.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="h-12 flex items-center justify-center glass text-[10px] tracking-[0.5em] text-gray-600 shrink-0">
+            © 2026 IBERIA-AI.COM · INFRAESTRUCTURA CORE SOBERANA
         </footer>
-    </div>
-
-    <div id="contactModal" class="modal flex items-center justify-center p-4">
-        <div class="modal-content glass p-8 rounded-3xl w-full max-w-md relative">
-            <button onclick="closeModal()" class="interactive absolute top-4 right-6 text-gray-500 text-2xl">&times;</button>
-            <h2 id="modalTitle" class="text-3xl font-bold mb-6">Unirse</h2>
-            <form class="interactive">
-                <input type="text" placeholder="Tu Nombre" required>
-                <input type="email" placeholder="Email de contacto" required>
-                <div id="renterFields"><input type="text" placeholder="Hardware (Ej: 2x 5060ti)"></div>
-                <button type="submit" class="w-full py-4 bg-blue-600 rounded-xl font-bold hover:bg-blue-700 transition">ENVIAR</button>
-            </form>
-        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
@@ -136,16 +125,19 @@
                 "particles": {
                     "number": { "value": 100 },
                     "color": { "value": "#0070f3" },
-                    "opacity": { "value": 0.4 },
-                    "size": { "value": 2 },
+                    "opacity": { "value": 0.3 },
                     "line_linked": { "enable": true, "distance": 150, "color": "#0070f3", "opacity": 0.2 },
-                    "move": { "enable": true, "speed": 1.5 }
-                },
-                "interactivity": { "events": { "onhover": { "enable": true, "mode": "grab" } } }
+                    "move": { "enable": true, "speed": 1.2 }
+                }
             });
         };
-        function openModal(t) { document.getElementById('contactModal').style.display = 'flex'; }
-        function closeModal() { document.getElementById('contactModal').style.display = 'none'; }
+
+        function showSection(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            // Actualizar clase activa en nav si es necesario
+        }
     </script>
 </body>
 </html>
