@@ -6,27 +6,120 @@
     <title>IBERIA-AI.COM | Infraestructura Soberana</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono&display=swap');
-        body { background-color: #020609; color: white; margin: 0; font-family: 'Inter', sans-serif; overflow: hidden; }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap');
+        
+        :root {
+            --iberia-blue: #3b82f6;
+            --bg-dark: #020609;
+            --card-bg: #0a0a0a;
+            --border-color: #1a1a1a;
+        }
+
+        body { 
+            background-color: var(--bg-dark); 
+            color: white; 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            overflow: hidden; 
+        }
+
         .mono { font-family: 'JetBrains Mono', monospace; }
-        #particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; pointer-events: none; }
+
+        /* Partículas de fondo: Puntos finos interconectados */
+        #particles-js { 
+            position: fixed; 
+            width: 100%; 
+            height: 100%; 
+            z-index: 1; 
+            pointer-events: none; 
+        }
+
         .page-container { position: relative; z-index: 10; height: 100vh; display: flex; flex-direction: column; }
-        .section { display: none; flex-grow: 1; overflow: hidden; }
-        .section.active { display: flex; }
-        .glass { background: rgba(10, 20, 40, 0.85); backdrop-filter: blur(12px); border-b: 1px solid rgba(255,255,255,0.05); }
-        .sidebar { width: 240px; border-right: 1px solid #1a1a1a; padding: 24px; background: #050a0f; overflow-y: auto; }
-        .filter-label { font-size: 10px; font-weight: 800; color: #444; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px; display: block; }
-        select, input[type="range"] { background: #0d1117; border: 1px solid #222; color: #fff; width: 100%; padding: 8px; border-radius: 4px; font-size: 11px; margin-bottom: 20px; }
-        .clore-card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 4px; margin-bottom: 12px; min-height: 165px; transition: border-color 0.2s; }
-        .clore-card:hover { border-color: #3b82f6; }
-        .card-main { padding: 14px 18px; display: flex; justify-content: space-between; align-items: center; }
-        .card-footer { background: #0d0d0d; padding: 6px 18px; display: grid; grid-template-columns: repeat(6, 1fr); font-size: 9px; border-top: 1px solid #1a1a1a; text-align: center; color: #555; font-weight: bold; }
-        .nav-link { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #94a3b8; cursor: pointer; }
-        .nav-link:hover, .nav-link.active { color: #3b82f6; }
-        .price-text { font-size: 26px; font-weight: 400; color: #fff; font-family: 'JetBrains Mono', monospace; }
-        .rent-btn { background: #3b82f6; color: white; padding: 8px 24px; border-radius: 4px; font-weight: 700; font-size: 12px; width: 100%; margin-top: 6px; }
-        .pulse { animation: pulse-green 2s infinite; }
-        @keyframes pulse-green { 0% { opacity: 0.6; } 50% { opacity: 1; } 100% { opacity: 0.6; } }
+        
+        .glass { 
+            background: rgba(2, 6, 9, 0.95); 
+            backdrop-filter: blur(8px); 
+            border-bottom: 1px solid var(--border-color); 
+        }
+
+        /* Sidebar según estándar [cite: 8] */
+        .sidebar { 
+            width: 260px; 
+            background: #050a0f; 
+            border-right: 1px solid var(--border-color); 
+            padding: 24px; 
+        }
+
+        .filter-label { 
+            font-size: 10px; 
+            font-weight: 800; 
+            color: #4b5563; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            margin-bottom: 8px; 
+            display: block; 
+        }
+
+        /* Clore Row Design [cite: 1, 2] */
+        .clore-card { 
+            background: var(--card-bg); 
+            border: 1px solid var(--border-color); 
+            height: 160px; 
+            margin-bottom: 10px; 
+            display: flex; 
+            flex-direction: column;
+            transition: all 0.2s ease;
+        }
+        
+        .clore-card:hover { border-color: var(--iberia-blue); }
+
+        .card-header {
+            padding: 8px 18px;
+            display: flex;
+            gap: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            color: #4b5563;
+            border-bottom: 1px solid #141414;
+        }
+
+        .card-body { 
+            flex: 1; 
+            display: grid; 
+            grid-template-columns: 2fr 2fr 1.5fr; 
+            padding: 12px 18px; 
+            align-items: center; 
+        }
+
+        /* Footer de 6 columnas [cite: 7] */
+        .card-footer { 
+            background: #0d0d0d; 
+            display: grid; 
+            grid-template-columns: repeat(6, 1fr); 
+            font-size: 9px; 
+            font-weight: 800;
+            color: #3d3d3d; 
+            text-align: center; 
+            padding: 6px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .price-huge { font-size: 24px; color: white; font-weight: 400; }
+        
+        .btn-rent { 
+            background: var(--iberia-blue); 
+            color: white; 
+            font-weight: 800; 
+            font-size: 11px; 
+            padding: 8px 0; 
+            width: 120px;
+            border-radius: 2px;
+            text-transform: uppercase;
+        }
+
+        .status-dot { width: 12px; height: 12px; border-radius: 50%; }
+        .pulse { animation: pulse-blue 2s infinite; }
+        @keyframes pulse-blue { 0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4); } 70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); } 100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); } }
         .rotating { animation: spin 4s linear infinite; }
         @keyframes spin { 100% { transform: rotate(360deg); } }
     </style>
@@ -35,123 +128,142 @@
     <div id="particles-js"></div>
 
     <div class="page-container">
-        <header class="h-16 flex items-center justify-between px-10 glass shrink-0 sticky top-0 z-50">
-            <div class="flex items-center space-x-12">
-                <h1 class="text-xl font-black tracking-tighter text-blue-500 mono cursor-pointer" onclick="showSection('home')">IBERIA-AI.COM</h1>
-                <nav class="hidden lg:flex space-x-8">
-                    <span class="nav-link" onclick="showSection('home')">Inicio</span>
-                    <span class="nav-link" onclick="showSection('marketplace')">Marketplace</span>
-                    <span class="nav-link" onclick="showSection('stats')">Estadísticas</span>
-                    <span class="nav-link" onclick="showSection('whitepaper')">White Paper</span>
+        <header class="h-16 flex items-center justify-between px-8 glass shrink-0">
+            <div class="flex items-center space-x-10">
+                <h1 class="text-xl font-black tracking-tighter text-blue-500 mono">IBERIA-AI.COM</h1>
+                <nav class="flex space-x-6">
+                    <a href="#" class="text-[11px] font-bold uppercase tracking-widest text-gray-400 hover:text-blue-500">Marketplace</a>
+                    <a href="#" class="text-[11px] font-bold uppercase tracking-widest text-gray-400 hover:text-blue-500">Estadísticas</a>
                 </nav>
             </div>
-            <div class="flex items-center space-x-6">
-                <button class="text-[11px] font-bold text-gray-500 uppercase">Login</button>
-                <button class="bg-blue-600 px-6 py-2 rounded font-bold text-[11px] uppercase tracking-widest">Registrarse</button>
+            <div class="flex items-center space-x-4">
+                <button class="bg-blue-600 px-5 py-2 rounded text-[10px] font-extrabold uppercase tracking-widest">Registrarse</button>
             </div>
         </header>
 
-        <main id="marketplace" class="section active">
-            <aside class="sidebar shrink-0">
-                <div class="filter-group"><span class="filter-label">Modelo GPU</span><select><option>Todas</option><option>RTX 5060 Ti</option></select></div>
-                <div class="filter-group"><span class="filter-label">VRAM Mínima</span><input type="range" min="6" max="24" value="8"></div>
-                <div class="filter-group"><span class="filter-label">Fiabilidad</span><select><option>99%+</option></select></div>
+        <div class="flex flex-1 overflow-hidden">
+            <aside class="sidebar">
+                <div class="mb-6">
+                    <label class="filter-label">Modelo GPU</label>
+                    <select class="w-full bg-[#0d1117] border border-[#222] text-[11px] p-2 rounded text-white">
+                        <option>Todas las GPUs</option>
+                        <option>NVIDIA RTX 5060 Ti</option>
+                        <option>NVIDIA RTX 3080 Ti</option>
+                    </select>
+                </div>
+                <div class="mb-6">
+                    <label class="filter-label">VRAM Mínima (GB)</label>
+                    <input type="range" class="w-full accent-blue-500" min="8" max="48">
+                </div>
+                <div class="mb-6">
+                    <label class="filter-label">Fiabilidad</label>
+                    <select class="w-full bg-[#0d1117] border border-[#222] text-[11px] p-2 rounded text-white">
+                        <option>99.9%+</option>
+                    </select>
+                </div>
             </aside>
 
-            <div class="flex-1 overflow-y-auto p-8 bg-[#020609]/40">
-                <h2 class="text-xl font-bold uppercase tracking-widest text-gray-400 mb-6 px-2">Nodos Disponibles</h2>
+            <main class="flex-1 p-6 overflow-y-auto bg-[#020609]/50">
+                <h2 class="text-xs font-black uppercase tracking-[0.3em] text-gray-500 mb-6">Nodos Disponibles</h2>
 
                 <div class="clore-card">
-                    <div class="card-main">
-                        <div class="flex-1">
-                            <div class="flex space-x-6 text-[10px] mb-3 uppercase font-bold text-gray-500">
-                                <span>#00000001</span> <span>Host: <b class="text-white font-mono">SERVER-5060TI</b></span> <span class="text-green-500">⏱ 42D 14H</span>
-                            </div>
-                            <h3 class="text-2xl font-bold text-white mb-4 flex items-center tracking-tight uppercase">
-                                <svg width="28" height="28" viewBox="0 0 24 24" class="mr-3" fill="#76b900"><path d="M24 10.155v3.69h-4.832c.313 1.156.91 2.19 1.696 3.037l-2.61 2.608c-1.464-1.435-2.52-3.193-3.004-5.116-.36.1-.732.164-1.114.164-2.21 0-4-1.79-4-4s1.79-4 4-4c.48 0 .935.093 1.36.252 1.055-2.073 2.766-3.784 4.837-4.837.25.42.503.834.755 1.25-.436.332-.84.707-1.202 1.12 1.48.513 2.804 1.393 3.843 2.532l-2.61 2.61c-.846-.786-1.88-1.382-3.036-1.696v4.832h3.69c-.1-3.61 2.126-6.69 5.237-8.05l1.69 1.69c-1.35 1.36-2.12 3.19-2.12 5.24z"/></svg>
-                                1x RTX 5060 Ti
-                            </h3>
-                            <div class="grid grid-cols-2 gap-8 text-[11px]">
-                                <div>
-                                    <p class="text-blue-400 font-bold mb-2">16GB VRAM GDDR6X</p>
-                                    <div class="flex items-start">
-                                        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" class="mr-3 mt-1"><path d="M0 12L12 0H24V12L12 24H0V12Z" fill="#ED1C24"/><path d="M4.5 12L12 4.5V12H4.5Z" fill="white"/></svg>
-                                        <div>
-                                            <p class="text-white font-bold">AMD Ryzen 5 3600 (2019)</p>
-                                            <p class="text-gray-500 text-[10px] mb-1">6 Cores / 12 Threads</p>
-                                            <p class="text-blue-300 font-bold">RAM: 64GB DDR4 @ 3600MHz</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div>
-                                    <p class="text-white font-bold uppercase tracking-tighter">1TB NVMe Samsung</p>
-                                    <p class="text-blue-400 font-bold mt-1 uppercase text-[10px]">Fiabilidad: 100.00%</p>
-                                </div>
+                    <div class="card-header">
+                        <span>#00000001</span>
+                        <span>HOST: <span class="text-white">SERVER-5060TI</span></span>
+                        <span class="text-green-500">● 42D 14H UPTIME</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="flex items-center">
+                            <svg class="w-10 h-10 mr-4" viewBox="0 0 24 24" fill="#76b900"><path d="M24 10.155v3.69h-4.832c.313 1.156.91 2.19 1.696 3.037l-2.61 2.608c-1.464-1.435-2.52-3.193-3.004-5.116-.36.1-.732.164-1.114.164-2.21 0-4-1.79-4-4s1.79-4 4-4c.48 0 .935.093 1.36.252 1.055-2.073 2.766-3.784 4.837-4.837.25.42.503.834.755 1.25-.436.332-.84.707-1.202 1.12 1.48.513 2.804 1.393 3.843 2.532l-2.61 2.61c-.846-.786-1.88-1.382-3.036-1.696v4.832h3.69c-.1-3.61 2.126-6.69 5.237-8.05l1.69 1.69c-1.35 1.36-2.12 3.19-2.12 5.24z"/></svg>
+                            <div>
+                                <h3 class="text-lg font-black leading-none">1X RTX 5060 TI</h3>
+                                <p class="text-[10px] text-blue-400 font-bold mt-1 uppercase">16GB VRAM GDDR6X | PCIe 4.0 x16</p>
                             </div>
                         </div>
-                        <div class="text-right flex items-center">
-                            <div class="mr-8"><div class="price-text">0,85€<span class="text-xs text-gray-600">/día</span></div><button class="rent-btn">ALQUILAR</button></div>
-                            <div class="pulse text-green-500 text-3xl">●</div>
+                        <div class="flex items-center border-l border-[#1a1a1a] pl-6">
+                            <svg class="w-8 h-8 mr-3" viewBox="0 0 24 24" fill="#ED1C24"><path d="M0 12L12 0H24V12L12 24H0V12Z"/><path d="M4.5 12L12 4.5V12H4.5Z" fill="white"/></svg>
+                            <div>
+                                <p class="text-[11px] font-bold text-white">AMD Ryzen 5 3600 (2019)</p>
+                                <p class="text-[10px] text-gray-500 font-medium">6 Cores / 12 Threads</p>
+                                <p class="text-[10px] text-blue-300 font-bold mt-0.5">64GB DDR4 @ 3600MHz</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-end space-x-6">
+                            <div class="text-right">
+                                <div class="price-huge mono">0,85€<span class="text-[10px] text-gray-500">/día</span></div>
+                                <button class="btn-rent">Alquilar</button>
+                            </div>
+                            <div class="status-dot bg-green-500 pulse"></div>
                         </div>
                     </div>
-                    <div class="card-footer uppercase"><div>RTX 5060 TI</div><div>ENCRIPTADO</div><div>RGPD OK</div><div>ESPAÑA</div><div>3600 MHZ</div><div class="text-yellow-600">180W</div></div>
+                    <div class="card-footer">
+                        <div>NVIDIA AD104</div>
+                        <div>AES-NI ACTIVE</div>
+                        <div>ISO/RGPD 27001</div>
+                        <div>MADRID, ES</div>
+                        <div>3600 MT/S</div>
+                        <div class="text-yellow-500">TDP 180W</div>
+                    </div>
                 </div>
 
-                <div class="clore-card opacity-80">
-                    <div class="card-main">
-                        <div class="flex-1">
-                            <div class="flex space-x-6 text-[10px] mb-3 uppercase font-bold text-gray-500">
-                                <span>#00000002</span> <span>Host: <b class="text-white font-mono">SERVER-3080TI</b></span> <span class="text-blue-500">⏱ 18D 06H</span>
-                            </div>
-                            <h3 class="text-2xl font-bold text-white mb-4 flex items-center tracking-tight uppercase">
-                                <svg width="28" height="28" viewBox="0 0 24 24" class="mr-3" fill="#76b900"><path d="M24 10.155v3.69h-4.832c.313 1.156.91 2.19 1.696 3.037l-2.61 2.608c-1.464-1.435-2.52-3.193-3.004-5.116-.36.1-.732.164-1.114.164-2.21 0-4-1.79-4-4s1.79-4 4-4c.48 0 .935.093 1.36.252 1.055-2.073 2.766-3.784 4.837-4.837.25.42.503.834.755 1.25-.436.332-.84.707-1.202 1.12 1.48.513 2.804 1.393 3.843 2.532l-2.61 2.61c-.846-.786-1.88-1.382-3.036-1.696v4.832h3.69c-.1-3.61 2.126-6.69 5.237-8.05l1.69 1.69c-1.35 1.36-2.12 3.19-2.12 5.24z"/></svg>
-                                1x RTX 3080 Ti
-                            </h3>
-                            <div class="grid grid-cols-2 gap-8 text-[11px]">
-                                <div>
-                                    <p class="text-blue-400 font-bold mb-2">12GB VRAM GDDR6X</p>
-                                    <div class="flex items-start">
-                                        <svg width="22" height="22" viewBox="0 0 24 24" fill="#0071C5" class="mr-3 mt-1"><path d="M24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zm-2 0c0-5.523-4.477-10-10-10S2 6.477 2 12s4.477 10 10 10 10-4.477 10-10zM7 16h2v-8H7v8zm6 0h2v-5h2v-3h-4v8zm6-3h2v-2h-2v2z"/></svg>
-                                        <div>
-                                            <p class="text-white font-bold">Intel Core i5-12400 (2022)</p>
-                                            <p class="text-gray-500 text-[10px] mb-1">6 Cores / 12 Threads</p>
-                                            <p class="text-blue-300 font-bold">RAM: 16GB DDR4 @ 3200MHz</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div><p class="text-white font-bold uppercase tracking-tighter">1TB SSD WesternDigital</p><p class="text-blue-400 font-bold mt-1 uppercase text-[10px]">Fiabilidad: 99.98%</p></div>
+                <div class="clore-card opacity-60">
+                    <div class="card-header">
+                        <span>#00000002</span>
+                        <span>HOST: <span class="text-white">SERVER-3080TI</span></span>
+                        <span class="text-blue-400">⏱ 18D 06H UPTIME</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="flex items-center">
+                            <svg class="w-10 h-10 mr-4" viewBox="0 0 24 24" fill="#76b900"><path d="M24 10.155v3.69h-4.832c.313 1.156.91 2.19 1.696 3.037l-2.61 2.608c-1.464-1.435-2.52-3.193-3.004-5.116-.36.1-.732.164-1.114.164-2.21 0-4-1.79-4-4s1.79-4 4-4c.48 0 .935.093 1.36.252 1.055-2.073 2.766-3.784 4.837-4.837.25.42.503.834.755 1.25-.436.332-.84.707-1.202 1.12 1.48.513 2.804 1.393 3.843 2.532l-2.61 2.61c-.846-.786-1.88-1.382-3.036-1.696v4.832h3.69c-.1-3.61 2.126-6.69 5.237-8.05l1.69 1.69c-1.35 1.36-2.12 3.19-2.12 5.24z"/></svg>
+                            <div>
+                                <h3 class="text-lg font-black leading-none">1X RTX 3080 TI</h3>
+                                <p class="text-[10px] text-blue-400 font-bold mt-1 uppercase">12GB VRAM GDDR6X | PCIe 4.0</p>
                             </div>
                         </div>
-                        <div class="text-right flex items-center">
-                            <div class="mr-8"><div class="price-text font-mono">1,20€<span class="text-xs text-gray-600">/día</span></div><button class="rent-btn !bg-gray-800" disabled>EN USO</button></div>
-                            <div class="rotating text-blue-500 text-3xl">⚙</div>
+                        <div class="flex items-center border-l border-[#1a1a1a] pl-6">
+                            <svg class="w-8 h-8 mr-3" viewBox="0 0 24 24" fill="#0071C5"><path d="M12 0C5.37 0 0 5.37 0 12s5.37 12 12 12 12-5.37 12-12S18.63 0 12 0zm0 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2z"/></svg>
+                            <div>
+                                <p class="text-[11px] font-bold text-white">Intel Core i5-12400 (2022)</p>
+                                <p class="text-[10px] text-gray-500 font-medium">6 Cores / 12 Threads</p>
+                                <p class="text-[10px] text-blue-300 font-bold mt-0.5">16GB DDR4 @ 3200MHz</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center justify-end space-x-6">
+                            <div class="text-right">
+                                <div class="price-huge mono">1,20€<span class="text-[10px] text-gray-500">/día</span></div>
+                                <button class="btn-rent !bg-gray-800 cursor-not-allowed">En Uso</button>
+                            </div>
+                            <div class="text-blue-500 text-xl rotating">⚙</div>
                         </div>
                     </div>
-                    <div class="card-footer uppercase"><div>RTX 3080 TI</div><div>ENCRIPTADO</div><div>RGPD OK</div><div>ESPAÑA</div><div>3200 MHZ</div><div class="text-yellow-600">350W</div></div>
+                    <div class="card-footer">
+                        <div>NVIDIA GA102</div>
+                        <div>ENCRIPTADO</div>
+                        <div>RGPD OK</div>
+                        <div>BARCELONA, ES</div>
+                        <div>3200 MT/S</div>
+                        <div class="text-yellow-500">TDP 350W</div>
+                    </div>
                 </div>
-            </div>
-        </main>
-        
-        <footer class="h-10 flex items-center justify-center glass text-[9px] tracking-[0.6em] text-gray-700 uppercase font-bold shrink-0">© 2026 IBERIA-AI.COM</footer>
+            </main>
+        </div>
+
+        <footer class="h-8 glass flex items-center justify-center text-[8px] font-black tracking-[0.5em] text-gray-600 uppercase">
+            © 2026 IBERIA-AI.COM | INFRAESTRUCTURA DE CÓMPUTO SOBERANO
+        </footer>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
     <script>
-        window.onload = function() {
-            particlesJS("particles-js", {
-                "particles": {
-                    "number": { "value": 100, "density": { "enable": true, "value_area": 800 } },
-                    "color": { "value": "#0070f3" },
-                    "size": { "value": 1.5, "random": true },
-                    "line_linked": { "enable": true, "distance": 150, "color": "#0070f3", "opacity": 0.2 },
-                    "move": { "enable": true, "speed": 1.2 }
-                }
-            });
-        };
-        function showSection(id) {
-            document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-            document.getElementById(id).classList.add('active');
-        }
+        particlesJS("particles-js", {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 1000 } },
+                "color": { "value": "#3b82f6" },
+                "line_linked": { "enable": true, "distance": 150, "color": "#3b82f6", "opacity": 0.15, "width": 1 },
+                "move": { "enable": true, "speed": 0.8 },
+                "size": { "value": 1.5 }
+            }
+        });
     </script>
 </body>
 </html>
