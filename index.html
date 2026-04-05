@@ -5,16 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <title>Alquiler de GPUs para IA y Render en España | IBERIA-AI.COM</title>
-    <meta name="description" content="Centro de cómputo IA de alto rendimiento con sede en A Coruña. Alquiler directo de NVIDIA H100 y RTX 5090. Baja latencia, cumplimiento RGPD y soporte local.">
-    <meta name="keywords" content="Alquiler GPU España, Computación IA A Coruña, Renderizado 3D Galicia, Servidores GPU, NVIDIA H100 Alquiler, RGPD Cloud España">
-    <link rel="canonical" href="https://iberia-ai.com/">
+    <meta name="description" content="Centro de cómputo IA de alto rendimiento con sede en A Coruña. Alquiler directo de NVIDIA H100 y RTX 5090. Facturación española, cumplimiento RGPD y soporte local.">
     
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "ComputingService",
       "name": "Iberia-AI",
-      "description": "Centro de computación de alto rendimiento para IA y Renderizado con sede en A Coruña, España.",
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "A Coruña",
@@ -22,11 +19,7 @@
         "addressCountry": "ES"
       },
       "url": "https://iberia-ai.com",
-      "email": "info@iberia-ai.com",
-      "offers": {
-        "@type": "Offer",
-        "itemOffered": "Alquiler de potencia de computación GPU"
-      }
+      "email": "info@iberia-ai.com"
     }
     </script>
 
@@ -45,172 +38,137 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap');
-        
         :root { --iberia-blue: #3b82f6; --bg-dark: #020609; }
         body { background-color: var(--bg-dark); color: white; font-family: 'Inter', sans-serif; margin: 0; width: 100vw; overflow-x: hidden; scroll-behavior: smooth; }
         .mono { font-family: 'JetBrains Mono', monospace; }
-
-        /* FONDO MATRIX GEOLOCALIZADO */
-        #matrix-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; overflow: hidden; opacity: 0.5; }
+        #matrix-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; pointer-events: none; opacity: 0.5; }
         .page-wrapper { position: relative; z-index: 10; width: 100%; }
-
-        /* UI ELEMENTS */
         .glass { background: rgba(2, 6, 9, 0.92); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
         .hero-gradient { background: linear-gradient(to bottom, #ffffff 50%, var(--iberia-blue) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        
-        .info-card { 
-            background: #0a0a0a; border: 1px solid #1a1a1a; padding: 2.5rem 2rem; border-radius: 4px; 
-            transition: 0.3s; min-height: 220px; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center;
-        }
+        .info-card { background: #0a0a0a; border: 1px solid #1a1a1a; padding: 3rem 2rem; border-radius: 4px; transition: 0.3s; text-align: center; display: flex; flex-direction: column; align-items: center; }
         .info-card:hover { border-color: var(--iberia-blue); transform: translateY(-5px); box-shadow: 0 10px 30px -15px rgba(59, 130, 246, 0.3); }
-
-        .btn-iberia { background: var(--iberia-blue); font-weight: 800; font-size: 11px; padding: 1.25rem 3rem; text-transform: uppercase; letter-spacing: 0.2em; border-radius: 2px; color: white; transition: 0.3s; cursor: pointer; display: inline-block; }
-        .btn-iberia:hover { box-shadow: 0 0 25px rgba(59, 130, 246, 0.5); transform: scale(1.02); }
-        
-        section { padding: 100px 10%; display: flex; flex-direction: column; align-items: center; position: relative; }
-        .grid-container { width: 100%; max-width: 1200px; margin: 0 auto; }
-
-        ::-webkit-scrollbar { width: 4px; }
-        ::-webkit-scrollbar-thumb { background: var(--iberia-blue); }
+        .btn-iberia { background: var(--iberia-blue); font-weight: 800; font-size: 11px; padding: 1.25rem 3rem; text-transform: uppercase; letter-spacing: 0.2em; border-radius: 2px; color: white; transition: 0.3s; display: inline-block; box-shadow: 6px 6px 0px #1d4ed8; }
+        section { padding: 120px 10%; position: relative; }
     </style>
 </head>
 <body>
     <div id="matrix-container"><canvas id="matrix-canvas"></canvas></div>
 
     <div class="page-wrapper">
-        <header class="h-20 grid grid-cols-3 items-center px-10 glass sticky top-0 z-50">
-            <div class="flex justify-start">
-                <a href="index.html" class="text-2xl font-black tracking-tighter text-blue-500 mono uppercase italic">IBERIA-AI.COM</a>
-            </div>
-
-            <nav class="hidden lg:flex justify-center space-x-10">
-                <span class="text-[11px] font-bold uppercase text-blue-500 tracking-widest cursor-default">Inicio</span>
-                <a href="equipos.html" class="text-[11px] font-bold uppercase text-gray-500 tracking-widest hover:text-white transition">Equipos disponibles</a>
-                <a href="estadisticas.html" class="text-[11px] font-bold uppercase text-gray-500 tracking-widest hover:text-white transition">Estadísticas</a>
+        <header class="h-24 grid grid-cols-3 items-center px-12 glass sticky top-0 z-50">
+            <div class="flex justify-start"><a href="index.html" class="text-2xl font-black text-blue-500 mono uppercase italic">IBERIA-AI.COM</a></div>
+            <nav class="hidden lg:flex justify-center space-x-12 uppercase font-bold text-[11px] tracking-widest">
+                <span class="text-blue-500">Inicio</span>
+                <a href="equipos.html" class="text-gray-500 hover:text-white transition">Equipos</a>
+                <a href="estadisticas.html" class="text-gray-500 hover:text-white transition">Estadísticas</a>
             </nav>
-
             <div class="flex justify-end">
-                <button class="bg-blue-600 px-8 py-3 rounded-sm font-black text-[11px] uppercase tracking-widest text-white hover:bg-blue-500 transition shadow-[4px_4px_0px_#1d4ed8]">Contratar Equipo</button>
+                <button class="bg-blue-600 px-8 py-3 rounded-sm font-black text-[11px] uppercase text-white shadow-[4px_4px_0px_#1d4ed8]">Contratar Equipo</button>
             </div>
         </header>
 
         <main>
-            <section class="h-[85vh] text-center flex flex-col justify-center">
-                <h2 class="text-7xl font-black hero-gradient uppercase mb-8 leading-[1.1] italic">Cómputo IA con <br> Latencia Cero</h2>
-                <p class="text-gray-400 text-xl font-medium max-w-3xl mb-12 uppercase tracking-[0.2em] mono leading-relaxed">
+            <section class="h-[80vh] flex flex-col justify-center items-center text-center">
+                <h2 class="text-7xl font-black hero-gradient uppercase mb-8 leading-tight italic">Cómputo IA con <br> Latencia Cero</h2>
+                <p class="text-gray-400 text-xl max-w-3xl mb-12 uppercase tracking-[0.2em] mono leading-relaxed">
                     Infraestructura GPU propia operada en España.<br>
-                    Sede Central en A Coruña. Cumplimiento normativo y soporte local.
+                    Sede Central en A Coruña.
                 </p>
-                <a href="equipos.html" class="btn-iberia shadow-[6px_6px_0px_#1d4ed8]">Ver Equipos en Alquiler</a>
+                <a href="equipos.html" class="btn-iberia">Ver Equipos en Alquiler</a>
             </section>
 
-            <section class="bg-[#020609]/80 border-t border-white/5">
-                <div class="grid-container grid grid-cols-1 md:grid-cols-3 gap-8">
+            <section class="bg-[#020609]/90 border-t border-white/5">
+                <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-10">
                     <div class="info-card">
-                        <div class="text-blue-500 font-black mb-4 mono text-xl tracking-tighter">01. PROXIMIDAD</div>
-                        <h3 class="text-white font-bold uppercase mb-4 tracking-tighter text-lg italic">Mínima Latencia</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Hardware físicamente en España. Inferencia y renderizado de alto nivel desde el noroeste peninsular para evitar retardos transoceánicos.</p>
+                        <div class="text-blue-500 font-black mb-4 mono text-xl tracking-tighter">01. LOCALIZACIÓN</div>
+                        <h3 class="text-white font-bold uppercase mb-4 text-lg italic">Servidores en España</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed uppercase mono text-[11px]">Hardware físico operado desde A Coruña. Sin saltos internacionales. Latencia < 15ms en península.</p>
                     </div>
                     <div class="info-card">
-                        <div class="text-blue-500 font-black mb-4 mono text-xl tracking-tighter">02. SEGURIDAD</div>
-                        <h3 class="text-white font-bold uppercase mb-4 tracking-tighter text-lg italic">Blindaje Normativo</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Cumplimiento estricto de la RGPD. Tus procesos y datos estratégicos permanecen bajo jurisdicción española y protección europea.</p>
+                        <div class="text-blue-500 font-black mb-4 mono text-xl tracking-tighter">02. PRIVACIDAD</div>
+                        <h3 class="text-white font-bold uppercase mb-4 text-lg italic">Blindaje RGPD</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed uppercase mono text-[11px]">Cumplimiento total de la normativa europea. Tus datos nunca salen de la jurisdicción española.</p>
                     </div>
                     <div class="info-card">
-                        <div class="text-blue-500 font-black mb-4 mono text-xl tracking-tighter">03. SOPORTE</div>
-                        <h3 class="text-white font-bold uppercase mb-4 tracking-tighter text-lg italic">Contacto Directo</h3>
-                        <p class="text-gray-500 text-sm leading-relaxed">Soporte técnico de ingenieros en castellano. Gestión directa de incidencias a través de <strong>info@iberia-ai.com</strong> o chat en vivo.</p>
+                        <div class="text-blue-500 font-black mb-4 mono text-xl tracking-tighter">03. ECONOMÍA</div>
+                        <h3 class="text-white font-bold uppercase mb-4 text-lg italic">Facturación Nacional</h3>
+                        <p class="text-gray-500 text-sm leading-relaxed uppercase mono text-[11px]">Empresa española con facturación en Euros. Deducibilidad total de IVA y soporte administrativo local.</p>
                     </div>
                 </div>
             </section>
 
             <section class="bg-transparent">
-                <div class="grid-container text-center">
-                    <h4 class="text-blue-500 font-black mono text-xs uppercase tracking-[0.4em] mb-4 italic">Next-Gen Infrastructure</h4>
-                    <h2 class="text-5xl font-black uppercase mb-16 tracking-tighter italic">Potencia sin <span class="text-blue-500">Compromisos</span></h2>
-                    
-                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                        <div class="border border-white/5 bg-black/40 p-10 backdrop-blur-sm shadow-[4px_4px_0px_rgba(59,130,246,0.1)]">
-                            <div class="text-5xl font-black mb-2 italic">32GB</div>
-                            <div class="text-gray-600 text-[10px] uppercase font-black mono tracking-widest">VRAM GDDR7</div>
+                <div class="max-w-7xl mx-auto text-center">
+                    <h4 class="text-blue-500 font-black mono text-xs uppercase tracking-[0.4em] mb-4 italic">Tier-3 Data Center Spec</h4>
+                    <h2 class="text-5xl font-black uppercase mb-16 italic tracking-tighter">Potencia <span class="text-blue-500">Certificada</span></h2>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                        <div class="border border-white/10 bg-black/60 p-12 backdrop-blur-md shadow-[5px_5px_0px_rgba(59,130,246,0.2)]">
+                            <div class="text-5xl font-black mb-2 italic tracking-tighter">32GB</div>
+                            <div class="text-gray-600 text-[10px] uppercase font-black mono">VRAM GDDR7</div>
                         </div>
-                        <div class="border border-white/5 bg-black/40 p-10 backdrop-blur-sm shadow-[4px_4px_0px_rgba(59,130,246,0.1)]">
-                            <div class="text-5xl font-black mb-2 italic">10GB</div>
-                            <div class="text-gray-600 text-[10px] uppercase font-black mono tracking-widest">Uplink LAN</div>
+                        <div class="border border-white/10 bg-black/60 p-12 backdrop-blur-md shadow-[5px_5px_0px_rgba(59,130,246,0.2)]">
+                            <div class="text-5xl font-black mb-2 italic tracking-tighter">10GB</div>
+                            <div class="text-gray-600 text-[10px] uppercase font-black mono">Fiber Uplink</div>
                         </div>
-                        <div class="border border-white/5 bg-black/40 p-10 backdrop-blur-sm shadow-[4px_4px_0px_rgba(59,130,246,0.1)]">
-                            <div class="text-5xl font-black mb-2 italic">99.9%</div>
-                            <div class="text-gray-600 text-[10px] uppercase font-black mono tracking-widest">SLA Uptime</div>
+                        <div class="border border-white/10 bg-black/60 p-12 backdrop-blur-md shadow-[5px_5px_0px_rgba(59,130,246,0.2)]">
+                            <div class="text-5xl font-black mb-2 italic tracking-tighter">99.9%</div>
+                            <div class="text-gray-600 text-[10px] uppercase font-black mono">SLA Guarantee</div>
                         </div>
-                        <div class="border border-white/5 bg-black/40 p-10 backdrop-blur-sm shadow-[4px_4px_0px_rgba(59,130,246,0.1)]">
-                            <div class="text-5xl font-black mb-2 italic">24/7</div>
-                            <div class="text-gray-600 text-[10px] uppercase font-black mono tracking-widest">Soporte Live</div>
+                        <div class="border border-white/10 bg-black/60 p-12 backdrop-blur-md shadow-[5px_5px_0px_rgba(59,130,246,0.2)]">
+                            <div class="text-5xl font-black mb-2 italic tracking-tighter">100%</div>
+                            <div class="text-gray-600 text-[10px] uppercase font-black mono">Soberanía Española</div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            <section class="bg-[#020609]/60 border-t border-white/5">
-                <div class="grid-container grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <section class="bg-[#020609]/70 border-t border-white/5">
+                <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
                     <div>
-                        <h2 class="text-4xl font-black uppercase mb-6 tracking-tighter italic italic">Infraestructura de <br><span class="text-blue-500">Alta Densidad</span></h2>
-                        <p class="text-gray-400 mb-8 mono text-sm leading-relaxed uppercase">Operamos nodos propios diseñados para cargas masivas de trabajo en inteligencia artificial, renderizado fotorrealista y análisis de Big Data.</p>
-                        <ul class="space-y-4 text-xs font-bold uppercase tracking-widest text-gray-500">
-                            <li class="flex items-center"><span class="text-blue-500 mr-3">//</span> Nodos NVIDIA serie 50 y serie Enterprise</li>
-                            <li class="flex items-center"><span class="text-blue-500 mr-3">//</span> Almacenamiento NVMe de ultra velocidad</li>
-                            <li class="flex items-center"><span class="text-blue-500 mr-3">//</span> Conectividad redundante de baja latencia</li>
-                            <li class="flex items-center"><span class="text-blue-500 mr-3">//</span> Refrigeración líquida industrial</li>
-                        </ul>
-                    </div>
-                    <div class="grid grid-cols-1 gap-4">
-                        <div class="bg-blue-600/5 border border-blue-600/20 p-8 rounded-sm">
-                            <h4 class="text-white font-black text-lg mb-2 uppercase italic tracking-tighter italic italic">Render Engine</h4>
-                            <p class="text-gray-500 text-xs mono uppercase">Optimizado para Octane, Redshift y Cycles con multi-GPU.</p>
+                        <h2 class="text-4xl font-black uppercase mb-8 italic tracking-tighter leading-tight">Infraestructura <br><span class="text-blue-500">Localizada en A Coruña</span></h2>
+                        <p class="text-gray-400 mb-10 mono text-sm leading-relaxed uppercase tracking-wide">Nodos de computación propios. No somos revendedores de nubes extranjeras. Controlamos el silicio desde el rack hasta la API.</p>
+                        <div class="space-y-6">
+                            <div class="flex items-start"><span class="text-blue-500 mono font-bold mr-4">>></span><span class="text-[11px] uppercase font-bold text-gray-500 tracking-widest">Protección de datos bajo leyes españolas</span></div>
+                            <div class="flex items-start"><span class="text-blue-500 mono font-bold mr-4">>></span><span class="text-[11px] uppercase font-bold text-gray-500 tracking-widest">Soporte técnico físico 24/7 en Coruña</span></div>
+                            <div class="flex items-start"><span class="text-blue-500 mono font-bold mr-4">>></span><span class="text-[11px] uppercase font-bold text-gray-500 tracking-widest">Facturación simplificada B2B con IVA local</span></div>
                         </div>
-                        <div class="bg-white/5 border border-white/10 p-8 rounded-sm">
-                            <h4 class="text-white font-black text-lg mb-2 uppercase italic tracking-tighter italic italic">IA Training</h4>
-                            <p class="text-gray-500 text-xs mono uppercase">Ideal para entrenamiento de LLMs y modelos de difusión.</p>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="bg-blue-600/5 border border-blue-500/20 p-10">
+                            <h4 class="text-white font-black text-xl mb-4 italic uppercase tracking-tighter">IA Training & Dev</h4>
+                            <p class="text-gray-500 text-xs mono uppercase leading-loose tracking-widest">Entornos seguros para entrenamiento de modelos LLM y visión artificial sin fuga de datos transoceánica.</p>
+                        </div>
+                        <div class="bg-white/5 border border-white/10 p-10">
+                            <h4 class="text-white font-black text-xl mb-4 italic uppercase tracking-tighter">GPU Rendering</h4>
+                            <p class="text-gray-500 text-xs mono uppercase leading-loose tracking-widest">Granjas de renderizado optimizadas para Redshift y Octane operando en baja temperatura ambiente.</p>
                         </div>
                     </div>
                 </div>
             </section>
         </main>
 
-        <footer class="bg-[#020609]/98 border-t border-white/5 py-20 relative z-30">
-            <div class="max-w-7xl mx-auto px-10">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-16 text-center md:text-left">
-                    <div class="flex flex-col items-center md:items-start">
-                        <h1 class="text-2xl font-black tracking-tighter text-blue-500 mono mb-6 italic uppercase">IBERIA-AI.COM</h1>
-                        <p class="text-gray-500 text-[10px] uppercase tracking-[0.2em] leading-relaxed">
-                            Centro de computación nacional <br> 
-                            Infraestructura física en A Coruña, España.
-                        </p>
-                    </div>
-                    
-                    <div class="flex flex-col items-center">
-                        <h4 class="text-white font-bold text-[11px] uppercase tracking-[0.3em] mb-8">Soporte y Legal</h4>
-                        <nav class="flex flex-col space-y-4">
-                            <a href="mailto:info@iberia-ai.com" class="text-blue-500 hover:text-white text-[11px] uppercase tracking-widest transition mono">info@iberia-ai.com</a>
-                            <a href="aviso-legal.html" class="text-gray-500 hover:text-blue-500 text-[10px] uppercase tracking-widest transition mono">Aviso Legal</a>
-                            <a href="privacidad.html" class="text-gray-500 hover:text-blue-500 text-[10px] uppercase tracking-widest transition mono">Privacidad</a>
-                            <a href="condiciones-venta.html" class="text-gray-500 hover:text-blue-500 text-[10px] uppercase tracking-widest transition mono">Condiciones</a>
-                        </nav>
-                    </div>
-
-                    <div class="flex flex-col items-center md:items-end">
-                        <h4 class="text-white font-bold text-[11px] uppercase tracking-[0.3em] mb-8 uppercase">Certificaciones</h4>
-                        <div class="flex space-x-4 mb-6">
-                            <div class="border border-white/10 px-4 py-2 text-[9px] text-gray-400 mono uppercase tracking-tighter">RGPD OK</div>
-                            <div class="border border-white/10 px-4 py-2 text-[9px] text-gray-400 mono uppercase tracking-tighter">GALICIA TECH</div>
-                        </div>
-                        <p class="text-gray-600 text-[9px] uppercase tracking-widest italic">Sede Central: A Coruña, España.</p>
-                    </div>
+        <footer class="bg-[#020609] border-t border-white/5 py-24 relative z-30">
+            <div class="max-w-7xl mx-auto px-12 grid grid-cols-1 md:grid-cols-3 gap-20">
+                <div class="flex flex-col">
+                    <h1 class="text-2xl font-black text-blue-500 mono mb-8 italic uppercase">IBERIA-AI.COM</h1>
+                    <p class="text-gray-500 text-[10px] uppercase tracking-[0.3em] leading-loose">Sede física: Polígono de Pocomaco, A Coruña. <br>Computación soberana española.</p>
                 </div>
-                
-                <div class="mt-20 pt-10 border-t border-white/5 flex flex-col items-center">
-                    <span class="text-[9px] font-black tracking-[0.6em] text-gray-800 uppercase text-center leading-loose">
-                        © 2026 IBERIA-AI.COM | A CORUÑA · MADRID · BARCELONA · VALENCIA · SEVILLA · BILBAO
-                    </span>
+                <div class="flex flex-col items-center">
+                    <h4 class="text-white font-bold text-[11px] uppercase tracking-[0.4em] mb-10 italic">Centro Legal</h4>
+                    <nav class="flex flex-col space-y-5 text-center">
+                        <a href="mailto:info@iberia-ai.com" class="text-blue-500 hover:text-white text-[11px] uppercase mono transition">info@iberia-ai.com</a>
+                        <a href="aviso-legal.html" class="text-gray-500 hover:text-blue-500 text-[10px] uppercase mono transition">Aviso Legal</a>
+                        <a href="privacidad.html" class="text-gray-500 hover:text-blue-500 text-[10px] uppercase mono transition">Privacidad</a>
+                        <a href="condiciones-venta.html" class="text-gray-500 hover:text-blue-500 text-[10px] uppercase mono transition">Condiciones</a>
+                    </nav>
+                </div>
+                <div class="flex flex-col items-end">
+                    <h4 class="text-white font-bold text-[11px] uppercase tracking-[0.4em] mb-10 italic">Certificaciones</h4>
+                    <div class="flex space-x-4 mb-10">
+                        <div class="border border-white/10 px-6 py-3 text-[10px] text-gray-500 mono uppercase tracking-widest">RGPD / LOPD</div>
+                        <div class="border border-white/10 px-6 py-3 text-[10px] text-gray-500 mono uppercase tracking-widest">ES-SERVER</div>
+                    </div>
+                    <span class="text-[9px] font-black tracking-[0.6em] text-gray-800 uppercase italic">A CORUÑA · MADRID · BCN</span>
                 </div>
             </div>
         </footer>
@@ -221,33 +179,23 @@
         const ctx = canvas.getContext('2d');
         let width, height, columns, drops;
         const fontSize = 16;
-        const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
-        const terms = ['IA', 'GPU', 'RENDER', 'CUDA', 'VRAM', 'NVIDIA', 'H100', 'RTX5090', 'DATACENTER', 'A CORUÑA', 'MADRID', 'BCN', 'GALICIA', 'LOW LATENCY'];
-
+        const terms = ['IA', 'GPU', 'CORUÑA', 'RGPD', 'ESPAÑA', 'NVIDIA', 'CUDA', 'UPLINK', 'B2B', 'VAT-ES', 'LOCAL'];
         function init() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-            columns = Math.floor(width / fontSize);
-            drops = Array(columns).fill(0).map(() => Math.random() * height/fontSize);
+            width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight;
+            columns = Math.floor(width / fontSize); drops = Array(columns).fill(0).map(() => Math.random() * height/fontSize);
         }
-
         function draw() {
-            ctx.fillStyle = 'rgba(2, 6, 9, 0.1)'; ctx.fillRect(0, 0, width, height);
+            ctx.fillStyle = 'rgba(2, 6, 9, 0.15)'; ctx.fillRect(0, 0, width, height);
             for (let i = 0; i < drops.length; i++) {
-                let text = chars[Math.floor(Math.random() * chars.length)];
-                if (Math.random() > 0.998) {
-                    text = terms[Math.floor(Math.random() * terms.length)];
-                    ctx.fillStyle = '#ffffff'; ctx.font = `bold ${fontSize}px 'JetBrains Mono'`;
-                } else {
-                    ctx.fillStyle = 'rgba(59, 130, 246, 0.2)'; ctx.font = `${fontSize}px 'JetBrains Mono'`;
-                }
+                let text = Math.random() > 0.99 ? terms[Math.floor(Math.random() * terms.length)] : String.fromCharCode(0x30A0 + Math.random() * 96);
+                ctx.fillStyle = text.length > 1 ? '#ffffff' : 'rgba(59, 130, 246, 0.25)';
+                ctx.font = `${fontSize}px 'JetBrains Mono'`;
                 ctx.fillText(text, i * fontSize, drops[i] * fontSize);
                 if (drops[i] * fontSize > height && Math.random() > 0.985) drops[i] = 0;
                 drops[i]++;
             }
         }
-        window.addEventListener('resize', init);
-        init(); setInterval(draw, 50);
+        window.addEventListener('resize', init); init(); setInterval(draw, 50);
     </script>
 </body>
 </html>
