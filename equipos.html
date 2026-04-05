@@ -17,27 +17,28 @@
         .tech-pill { background: #161b22; border: 1px solid #30363d; padding: 2px 8px; border-radius: 3px; font-size: 9px; color: #8b949e; font-family: 'JetBrains Mono', monospace; width: 42px; text-align: center; }
         .status-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; margin-right: 8px; background: #10b981; box-shadow: 0 0 12px #10b981; }
         
-        /* BOTONES PRO CON PROFUNDIDAD */
+        /* BOTONES PRO CON SOMBRA DESPLAZADA A LA DERECHA */
         .btn-rent-pro { 
             background: var(--iberia-blue); 
-            font-size: 16px; /* Doble de tamaño aproximado */
+            font-size: 16px; 
             font-weight: 900; 
             padding: 14px 24px; 
             text-transform: uppercase; 
             border-radius: 4px; 
             color: white; 
             transition: 0.3s;
-            box-shadow: 0 4px 0px #1d4ed8, 0 10px 20px -5px rgba(59, 130, 246, 0.4);
+            /* 4px derecha, 4px abajo, 0 desenfoque para el borde solido, color oscuro */
+            box-shadow: 4px 4px 0px #1d4ed8, 10px 10px 20px -5px rgba(59, 130, 246, 0.3);
             letter-spacing: 0.05em;
         }
         .btn-rent-pro:hover { 
-            transform: translateY(-2px); 
-            box-shadow: 0 6px 0px #1d4ed8, 0 15px 25px -5px rgba(59, 130, 246, 0.5);
+            transform: translate(-2px, -2px); /* Se mueve un poco arriba e izquierda al hover */
+            box-shadow: 6px 6px 0px #1d4ed8, 15px 15px 25px -5px rgba(59, 130, 246, 0.4);
             background: #4a8ff7;
         }
         .btn-rent-pro:active {
-            transform: translateY(2px);
-            box-shadow: 0 2px 0px #1d4ed8;
+            transform: translate(2px, 2px); /* Se "hunde" hacia la sombra */
+            box-shadow: 2px 2px 0px #1d4ed8;
         }
     </style>
 </head>
@@ -57,14 +58,13 @@
         <p class="text-gray-500 mono text-xs uppercase mb-16 tracking-widest">Infraestructura Pro · A Coruña Node ES-01</p>
 
         <div class="flex flex-col">
-            
             <div>
                 <span class="gama-label">Gama Ultra-Performance</span>
                 <div class="equip-row">
                     <div class="flex flex-col">
                         <span class="text-white font-black text-xl tracking-tight uppercase">RTX 5090 x1</span>
                         <div class="flex items-center mt-2 space-x-2">
-                            <span class="bg-blue-500/10 text-blue-400 text-[10px] font-bold px-2 py-0.5 rounded border border-blue-500/20">32GB GDDR7</span>
+                            <span class="bg-blue-500/10 text-blue-400 text-[10px] font-bold px-2 py-0.5 rounded border border-blue-500/20 uppercase">32GB GDDR7</span>
                             <span class="text-gray-600 text-[9px] mono uppercase italic">LC-ULTRA-01</span>
                         </div>
                     </div>
@@ -94,7 +94,7 @@
                     <div class="flex flex-col">
                         <span class="text-white font-black text-xl tracking-tight uppercase">RTX 5060ti x1</span>
                         <div class="flex items-center mt-2 space-x-2">
-                            <span class="bg-blue-500/10 text-blue-400 text-[10px] font-bold px-2 py-0.5 rounded border border-blue-500/20">16GB GDDR7</span>
+                            <span class="bg-blue-500/10 text-blue-400 text-[10px] font-bold px-2 py-0.5 rounded border border-blue-500/20 uppercase">16GB GDDR7</span>
                             <span class="text-gray-600 text-[9px] mono uppercase italic">LC-ALTA-02</span>
                         </div>
                     </div>
@@ -124,7 +124,7 @@
                     <div class="flex flex-col">
                         <span class="text-white font-black text-xl tracking-tight uppercase">RTX 3070 x1</span>
                         <div class="flex items-center mt-2 space-x-2">
-                            <span class="bg-blue-500/10 text-blue-400 text-[10px] font-bold px-2 py-0.5 rounded border border-blue-500/20">8GB GDDR6</span>
+                            <span class="bg-blue-500/10 text-blue-400 text-[10px] font-bold px-2 py-0.5 rounded border border-blue-500/20 uppercase">8GB GDDR6</span>
                             <span class="text-gray-600 text-[9px] mono uppercase italic">LC-MEDIA-03</span>
                         </div>
                     </div>
@@ -154,7 +154,7 @@
                     <div class="flex flex-col">
                         <span class="text-white font-black text-xl tracking-tight uppercase tracking-tighter">1660 Super x1</span>
                         <div class="flex items-center mt-2 space-x-2">
-                            <span class="bg-blue-500/10 text-blue-400 text-[10px] font-bold px-2 py-0.5 rounded border border-blue-500/20">6GB GDDR6</span>
+                            <span class="bg-blue-500/10 text-blue-400 text-[10px] font-bold px-2 py-0.5 rounded border border-blue-500/20 uppercase">6GB GDDR6</span>
                             <span class="text-gray-600 text-[9px] mono uppercase italic">LC-BASIC-04</span>
                         </div>
                     </div>
@@ -177,7 +177,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </main>
 </body>
