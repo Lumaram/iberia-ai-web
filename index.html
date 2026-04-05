@@ -2,141 +2,221 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IBERIA-AI.COM | Infraestructura Soberana</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&display=swap');
-        body { background-color: #020609; color: white; font-family: 'Inter', sans-serif; margin: 0; overflow: hidden; }
+        
+        :root { 
+            --iberia-blue: #3b82f6; 
+            --bg-dark: #020609; 
+        }
+
+        body { 
+            background-color: var(--bg-dark); 
+            color: white; 
+            font-family: 'Inter', sans-serif; 
+            margin: 0; 
+            overflow: hidden; 
+        }
+
         .mono { font-family: 'JetBrains Mono', monospace; }
-        #pcb-container { position: fixed; width: 100vw; height: 100vh; top: 0; left: 0; z-index: 1; pointer-events: none; }
-        .page-container { position: relative; z-index: 10; height: 100vh; display: flex; flex-direction: column; }
-        .glass { background: rgba(2, 6, 9, 0.94); backdrop-filter: blur(16px); border-bottom: 1px solid #1a1a1a; }
-        .hero-gradient { background: linear-gradient(to bottom, #ffffff 40%, #3b82f6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .btn-iberia { background: #3b82f6; transition: 0.3s; font-weight: 800; font-size: 11px; border-radius: 2px; letter-spacing: 0.2em; }
+
+        /* Contenedor del Efecto Matrix sutil a pantalla completa */
+        #matrix-container {
+            position: fixed; 
+            width: 100vw; 
+            height: 100vh;
+            top: 0; 
+            left: 0; 
+            z-index: 1; 
+            pointer-events: none; /* Asegura interactividad de botones */
+        }
+
+        .page-container { 
+            position: relative; 
+            z-index: 10; 
+            height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+        }
+
+        .glass { 
+            background: rgba(2, 6, 9, 0.9); 
+            backdrop-filter: blur(12px); 
+            border-bottom: 1px solid #1a1a1a; 
+        }
+        
+        /* Navegación */
+        .nav-link { 
+            font-size: 11px; 
+            font-weight: 800; 
+            text-transform: uppercase; 
+            letter-spacing: 0.15em; 
+            color: #444; 
+            transition: 0.3s; 
+            cursor: pointer; 
+        }
+        .nav-link.active { 
+            color: var(--iberia-blue); 
+            text-shadow: 0 0 12px rgba(59, 130, 246, 0.6); 
+        }
+        
+        /* Hero Title con degradado sutil */
+        .hero-title {
+            font-size: clamp(3rem, 7vw, 5.5rem);
+            line-height: 0.9;
+            letter-spacing: -0.05em;
+        }
+
+        .hero-gradient {
+            background: linear-gradient(to bottom, #ffffff 50%, var(--iberia-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Botón Iberia con sombra sutil */
+        .btn-iberia { 
+            background: var(--iberia-blue); 
+            transition: 0.3s; 
+            font-weight: 800; 
+            font-size: 11px; 
+            padding: 1.25rem 3rem; 
+            text-transform: uppercase; 
+            letter-spacing: 0.2em; 
+            border-radius: 2px; 
+            color: white;
+        }
+        .btn-iberia:hover { 
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.5); 
+            transform: translateY(-1px); 
+        }
+
+        .btn-outline { 
+            border: 1px solid rgba(255, 255, 255, 0.1); 
+            transition: 0.3s; 
+            font-weight: 800; 
+            font-size: 11px; 
+            padding: 1.25rem 3rem; 
+            text-transform: uppercase; 
+            letter-spacing: 0.2em; 
+            border-radius: 2px; 
+            color: white;
+        }
+        .btn-outline:hover { 
+            background: rgba(255, 255, 255, 0.05); 
+            border-color: rgba(255, 255, 255, 0.3); 
+        }
     </style>
 </head>
 <body>
-    <div id="pcb-container"><canvas id="pcb-canvas"></canvas></div>
-    
+    <div id="matrix-container">
+        <canvas id="matrix-canvas"></canvas>
+    </div>
+
     <div class="page-container">
-        <header class="h-20 flex items-center justify-between px-10 glass shrink-0">
+        <header class="h-20 flex items-center justify-between px-10 glass shrink-0 relative z-50">
             <div class="flex items-center space-x-12">
                 <h1 class="text-2xl font-black tracking-tighter text-blue-500 mono">IBERIA-AI.COM</h1>
                 <nav class="flex space-x-8">
-                    <span class="text-[11px] font-800 uppercase tracking-widest text-blue-500">Inicio</span>
-                    <span class="text-[11px] font-800 uppercase tracking-widest text-gray-500">Marketplace</span>
-                    <span class="text-[11px] font-800 uppercase tracking-widest text-gray-500">Estadísticas</span>
+                    <span class="nav-link active">Inicio</span>
+                    <span class="nav-link">Marketplace</span>
+                    <span class="nav-link">Estadísticas</span>
+                    <span class="nav-link">White Paper</span>
                 </nav>
             </div>
-            <button class="bg-blue-600 px-8 py-3 rounded-sm font-black text-[11px] uppercase tracking-widest">Registrarse</button>
+            <div class="flex items-center space-x-6">
+                <button class="text-[11px] font-bold text-gray-500 uppercase tracking-widest hover:text-white transition">Login</button>
+                <button class="bg-blue-600 px-8 py-3 rounded-sm font-black text-[11px] uppercase tracking-widest text-white">Registrarse</button>
+            </div>
         </header>
 
-        <main class="flex-1 flex flex-col items-center justify-center text-center px-10">
-            <h2 class="text-7xl font-black mb-8 hero-gradient uppercase leading-none">Potencia de cómputo <br> sin fronteras</h2>
-            <p class="text-gray-400 text-xl font-medium max-w-2xl mx-auto mb-16 uppercase tracking-[0.2em] mono">
-                Infraestructura GPU descentralizada <br> bajo normativa europea.
-            </p>
-            <div class="flex gap-6">
-                <button class="btn-iberia px-12 py-5 uppercase text-white">Explorar Marketplace</button>
-                <button class="border border-white/10 px-12 py-5 uppercase text-white hover:bg-white/5 transition">Ver Whitepaper</button>
+        <main class="flex-1 flex flex-col items-center justify-center text-center px-10 relative z-40">
+            <div class="max-w-5xl">
+                <h2 class="hero-title font-black hero-gradient uppercase">
+                    Potencia de cómputo <br> sin fronteras
+                </h2>
+                <p class="text-gray-400 text-lg md:text-xl font-medium max-w-2xl mx-auto mb-16 uppercase tracking-[0.2em] mono leading-relaxed">
+                    Infraestructura GPU descentralizada <br> de alto rendimiento bajo normativa europea.
+                </p>
+                
+                <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                    <button class="btn-iberia">Explorar Marketplace</button>
+                    <button class="btn-outline">Ver Whitepaper</button>
+                </div>
             </div>
         </main>
+
+        <footer class="h-12 glass flex items-center justify-center text-[10px] font-black tracking-[0.5em] text-gray-600 uppercase">
+            © 2026 IBERIA-AI.COM | INFRAESTRUCTURA DE CÓMPUTO SOBERANO
+        </footer>
     </div>
 
     <script>
-        const canvas = document.getElementById('pcb-canvas');
+        const canvas = document.getElementById('matrix-canvas');
         const ctx = canvas.getContext('2d');
-        let width, height, spark;
-        const traces = [];
-        const capacitors = [];
+        let width, height;
 
-        class Segment {
-            constructor(x1, y1, x2, y2) {
-                this.x1 = x1; this.y1 = y1; this.x2 = x2; this.y2 = y2;
-                this.children = [];
-                if (Math.random() > 0.8) capacitors.push({x: x2, y: y2, charge: 0});
-            }
-            draw() {
-                ctx.strokeStyle = 'rgba(59, 130, 246, 0.07)';
-                ctx.lineWidth = 1.5;
-                ctx.beginPath(); ctx.moveTo(this.x1, this.y1); ctx.lineTo(this.x2, this.y2); ctx.stroke();
-                this.children.forEach(c => c.draw());
-            }
-        }
+        // Caracteres: Katakana + Alfanuméricos (Estilo Matrix Técnico)
+        const characters = 'アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズブヅプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴッン0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
+        const fontSize = 16;
+        let columns;
+        let drops;
 
-        function generateGridCircuit() {
-            const step = 100;
-            const root = new Segment(width/2, height/2, width/2 + step, height/2);
-            
-            function grow(node, d) {
-                if (d <= 0) return;
-                const dirs = [[0, step], [0, -step], [step, 0], [-step, 0]];
-                const num = Math.floor(Math.random() * 2) + 1;
-                for(let i=0; i<num; i++) {
-                    const pick = dirs[Math.floor(Math.random() * dirs.length)];
-                    const nextX = node.x2 + pick[0];
-                    const nextY = node.y2 + pick[1];
-                    if (nextX > 0 && nextX < width && nextY > 0 && nextY < height) {
-                        const child = new Segment(node.x2, node.y2, nextX, nextY);
-                        node.children.push(child);
-                        grow(child, d - 1);
-                    }
-                }
-            }
-            grow(root, 15); // Aumentada profundidad para cubrir todo
-            return root;
-        }
-
-        class Spark {
-            constructor(root) { this.root = root; this.reset(); }
-            reset() { this.curr = this.root; this.t = 0; }
-            update() {
-                this.t += 0.02;
-                if (this.t >= 1) {
-                    if (this.curr.children.length > 0) {
-                        this.curr = this.curr.children[Math.floor(Math.random() * this.curr.children.length)];
-                        this.t = 0;
-                        capacitors.forEach(c => {
-                            if(Math.abs(c.x - this.curr.x1) < 2 && Math.abs(c.y - this.curr.y1) < 2) c.charge = 1;
-                        });
-                    } else { this.reset(); }
-                }
-            }
-            draw() {
-                const x = this.curr.x1 + (this.curr.x2 - this.curr.x1) * this.t;
-                const y = this.curr.y1 + (this.curr.y2 - this.curr.y1) * this.t;
-                ctx.fillStyle = '#3b82f6';
-                ctx.shadowBlur = 20; ctx.shadowColor = '#3b82f6';
-                ctx.beginPath(); ctx.arc(x, y, 3, 0, Math.PI*2); ctx.fill();
-                ctx.shadowBlur = 0;
-            }
-        }
-
-        function init() {
+        function resize() {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
-            capacitors.length = 0;
-            unifiedRoot = generateGridCircuit();
-            spark = new Spark(unifiedRoot);
+            
+            columns = Math.floor(width / fontSize);
+            drops = [];
+            // Inicializar las gotas en posiciones aleatorias
+            for (let i = 0; i < columns; i++) {
+                drops[i] = Math.floor(Math.random() * height / fontSize); 
+            }
         }
 
-        function animate() {
-            ctx.fillStyle = 'rgba(2, 6, 9, 0.08)'; // Estela persistente
+        function drawMatrix() {
+            // Fondo semitransparente para el rastro sutil ( trail)
+            ctx.fillStyle = 'rgba(2, 6, 9, 0.06)'; // Opacidad muy baja para máxima sutileza
             ctx.fillRect(0, 0, width, height);
-            unifiedRoot.draw();
-            capacitors.forEach(c => {
-                if(c.charge > 0) {
-                    ctx.fillStyle = `rgba(59, 130, 246, ${c.charge})`;
-                    ctx.fillRect(c.x-5, c.y-5, 10, 10);
-                    c.charge *= 0.96;
+
+            // Estilo de fuente Matrix sutil (Iberia-AI Blue)
+            ctx.fillStyle = 'rgba(59, 130, 246, 0.15)'; // Opacidad base baja de los caracteres
+            ctx.font = `${fontSize}px 'JetBrains Mono'`;
+
+            for (let i = 0; i < drops.length; i++) {
+                // Seleccionar carácter aleatorio
+                const text = characters[Math.floor(Math.random() * characters.length)];
+                
+                // Dibujar el carácter en la posición actual
+                const x = i * fontSize;
+                const y = drops[i] * fontSize;
+
+                // Añadir un brillo sutil en la cabeza de la gota
+                if (Math.random() > 0.98) {
+                    ctx.fillStyle = 'rgba(255, 255, 255, 0.6)'; // Brillo blanco sutil
+                    ctx.fillText(text, x, y);
+                    ctx.fillStyle = 'rgba(59, 130, 246, 0.15)'; // Reset color base
+                } else {
+                    ctx.fillText(text, x, y);
                 }
-            });
-            spark.update(); spark.draw();
-            requestAnimationFrame(animate);
+                
+                // Mover la gota hacia abajo
+                drops[i]++;
+
+                // Reiniciar la gota cuando llegue al final o aleatoriamente
+                if (drops[i] * fontSize > height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+            }
         }
 
-        window.addEventListener('resize', init);
-        init(); animate();
+        window.addEventListener('resize', resize);
+        resize(); // Inicializar
+
+        // Animación a 30 FPS para máxima sutileza
+        setInterval(drawMatrix, 40);
     </script>
 </body>
 </html>
