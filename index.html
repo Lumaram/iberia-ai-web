@@ -3,30 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IBERIA-AI.COM | Infraestructura Soberana y Encriptada</title>
+    <title>IBERIA-AI.COM | Infraestructura Soberana</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono&display=swap');
         body { background-color: #020609; color: white; margin: 0; font-family: 'Inter', sans-serif; overflow: hidden; }
         .mono { font-family: 'JetBrains Mono', monospace; }
-        #particles-js { position: fixed; width: 100%; height: 100%; z-index: 1; pointer-events: none; }
-        .page-container { position: relative; z-index: 10; height: 100vh; display: flex; flex-col; }
+        #particles-js { position: fixed; width: 100%; height: 100%; top: 0; left: 0; z-index: 1; pointer-events: none; }
+        .page-container { position: relative; z-index: 10; height: 100vh; display: flex; flex-direction: column; }
         .section { display: none; flex-grow: 1; padding: 40px; overflow-y: auto; }
         .section.active { display: block; }
         .glass { background: rgba(10, 20, 40, 0.6); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.05); }
-        .card { background: rgba(15, 25, 40, 0.4); border: 1px solid rgba(0, 112, 243, 0.1); transition: all 0.2s; border-radius: 16px; padding: 24px; }
-        .nav-link { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #94a3b8; transition: color 0.2s; cursor: pointer; }
+        .card { background: rgba(15, 25, 40, 0.4); border: 1px solid rgba(0, 112, 243, 0.1); border-radius: 16px; padding: 24px; }
+        .nav-link { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: #94a3b8; cursor: pointer; }
         .nav-link:hover, .nav-link.active { color: #3b82f6; }
+        .text-gradient { background: linear-gradient(135deg, #ffffff 0%, #3b82f6 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     </style>
 </head>
 <body>
     <div id="particles-js"></div>
 
-    <div class="page-container flex flex-col">
+    <div class="page-container">
         <header class="h-20 flex items-center justify-between px-10 glass shrink-0 border-b border-white/5">
             <div class="flex items-center space-x-12">
                 <h1 class="text-xl font-black tracking-tighter text-blue-500 mono cursor-pointer" onclick="showSection('home')">IBERIA-AI.COM</h1>
-                <nav class="hidden lg:flex space-x-8">
+                <nav class="hidden lg:flex space-x-8 text-center items-center">
                     <span class="nav-link" onclick="showSection('home')">Inicio</span>
                     <span class="nav-link" onclick="showSection('marketplace')">Marketplace</span>
                     <span class="nav-link" onclick="showSection('stats')">Estadísticas</span>
@@ -34,7 +35,7 @@
                 </nav>
             </div>
             <div class="flex items-center space-x-4">
-                <button class="text-xs font-bold text-gray-400 hover:text-white transition">LOGIN</button>
+                <button class="text-xs font-bold text-gray-400 hover:text-white transition uppercase">Login</button>
                 <button class="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-lg font-bold text-xs transition uppercase tracking-widest">Registrarse</button>
             </div>
         </header>
@@ -44,78 +45,57 @@
                 <div class="px-4 py-1 border border-blue-500/30 rounded text-[10px] font-bold text-blue-400 mb-8 tracking-[0.4em] uppercase bg-blue-500/5">
                     Infraestructura Nacional Encriptada
                 </div>
-                <h2 class="text-6xl md:text-8xl font-black mb-8 tracking-tighter leading-none">Cómputo con <br><span class="text-blue-500">Soberanía Jurídica</span></h2>
+                <h2 class="text-6xl md:text-8xl font-black mb-8 tracking-tighter leading-none">
+                    Potencia GPU de Élite <br><span class="text-blue-500">desde España</span>
+                </h2>
                 <p class="text-gray-400 max-w-3xl mb-12 text-xl leading-relaxed">
-                    Garantizamos que sus datos nunca abandonan territorio nacional. Nodos GPU de alta fidelidad bajo <b>estricto cumplimiento RGPD</b> y encriptación de grado militar.
+                    Alquiler de equipos para IA con <b>soberanía jurídica</b> y encriptación de grado industrial. Tarifas optimizadas para empresas que exigen seguridad RGPD y servidores locales.
                 </p>
                 <div class="flex gap-4">
                     <button onclick="showSection('marketplace')" class="bg-white text-black px-10 py-4 rounded-xl font-bold hover:bg-gray-200 transition">Explorar Marketplace</button>
-                    <button onclick="showSection('whitepaper')" class="border border-white/10 px-10 py-4 rounded-xl font-bold hover:bg-white/5 transition">Ver Seguridad Técnica</button>
+                    <button onclick="showSection('whitepaper')" class="border border-white/10 px-10 py-4 rounded-xl font-bold hover:bg-white/5 transition uppercase text-xs tracking-widest">Ver White Paper</button>
                 </div>
             </div>
         </main>
 
-        <main id="marketplace" class="section">
+        <main id="marketplace" class="section text-center">
             <div class="max-w-6xl mx-auto py-10">
-                <div class="flex justify-between items-end mb-12">
+                <h2 class="text-4xl font-black mb-10 tracking-tight">Marketplace de Nodos</h2>
+                <div class="card flex justify-between items-center mb-4 text-left">
                     <div>
-                        <h2 class="text-3xl font-bold mb-2 tracking-tight">Nodos Disponibles</h2>
-                        <p class="text-gray-500 text-sm">Tarifas optimizadas. Facturación española con IVA deducible.</p>
+                        <h4 class="text-xl font-bold uppercase">NVIDIA RTX 5060 Ti · <span class="text-blue-500">16GB VRAM</span></h4>
+                        <p class="text-xs text-gray-500 mt-1 mono">UBICACIÓN: HUB MADRID/CORUÑA · SEGURIDAD: ENCRIPTADO</p>
                     </div>
-                    <div class="bg-green-500/10 text-green-400 px-4 py-2 rounded border border-green-500/20 text-xs font-bold">
-                        JURISDICCIÓN: ESPAÑA 🇪🇸
-                    </div>
-                </div>
-                
-                <div class="grid grid-cols-1 gap-4">
-                    <div class="card flex justify-between items-center">
-                        <div>
-                            <div class="flex items-center space-x-2 mb-2">
-                                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                                <span class="text-[10px] font-bold text-gray-500 mono uppercase">Encrypted Instance · ID: 5060TI-CORE</span>
-                            </div>
-                            <h4 class="text-xl font-bold">NVIDIA RTX 5060 Ti · <span class="text-blue-500">16GB VRAM</span></h4>
-                            <p class="text-xs text-gray-400 mt-1 uppercase tracking-widest">Ryzen 5 · 64GB RAM · Ubicación: Madrid/A Coruña Hub</p>
-                        </div>
-                        <div class="text-right">
-                            <span class="block text-3xl font-black">0,85€<span class="text-sm font-normal text-gray-500">/día</span></span>
-                            <button class="bg-blue-600 px-8 py-3 rounded-lg font-bold text-xs uppercase mt-3 w-full">Alquilar</button>
-                        </div>
+                    <div class="text-right">
+                        <span class="block text-3xl font-black">0,85€<span class="text-sm font-normal text-gray-500">/día</span></span>
+                        <button class="bg-blue-600 px-8 py-2 rounded-lg font-bold text-xs uppercase mt-2">Alquilar</button>
                     </div>
                 </div>
             </div>
         </main>
 
-        <main id="stats" class="section">
+        <main id="stats" class="section text-center">
             <div class="max-w-6xl mx-auto py-10">
-                <h2 class="text-3xl font-bold mb-10 tracking-tight">Estadísticas de Red en Tiempo Real</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                    <div class="card"><p class="text-gray-500 text-xs mb-2">UPTIME GLOBAL</p><p class="text-4xl font-black text-blue-500">99.98%</p></div>
-                    <div class="card"><p class="text-gray-500 text-xs mb-2">POTENCIA TOTAL VRAM</p><p class="text-4xl font-black text-blue-500">128 GB</p></div>
-                    <div class="card"><p class="text-gray-500 text-xs mb-2">TIEMPO MEDIO RESPUESTA</p><p class="text-4xl font-black text-blue-500">12ms</p></div>
+                <h2 class="text-3xl font-bold mb-10 tracking-widest uppercase">Métricas de Red</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="card"><p class="text-gray-500 text-[10px] font-bold mb-2 uppercase">Uptime</p><p class="text-4xl font-black text-blue-500">99.98%</p></div>
+                    <div class="card"><p class="text-gray-500 text-[10px] font-bold mb-2 uppercase">Jurisdicción</p><p class="text-4xl font-black text-blue-500">ES 🇪🇸</p></div>
+                    <div class="card"><p class="text-gray-500 text-[10px] font-bold mb-2 uppercase">Tarifas</p><p class="text-4xl font-black text-blue-500">L-COST</p></div>
                 </div>
             </div>
         </main>
 
         <main id="whitepaper" class="section">
             <div class="max-w-4xl mx-auto py-10">
-                <h2 class="text-3xl font-bold mb-6 tracking-tight text-blue-500">Seguridad Jurídica y Técnica</h2>
-                <div class="prose prose-invert max-w-none space-y-8">
-                    <div class="card">
-                        <h3 class="text-xl font-bold mb-4">1. Localización Física</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">A diferencia de los proveedores de nube pública tradicionales, todos nuestros servidores están localizados físicamente en España. Esto garantiza que cualquier dato procesado cae bajo la legislación española y el marco del RGPD europeo.</p>
-                    </div>
-                    <div class="card">
-                        <h3 class="text-xl font-bold mb-4">2. Encriptación End-to-End</h3>
-                        <p class="text-gray-400 text-sm leading-relaxed">Utilizamos protocolos de aislamiento de hardware y encriptación de discos para asegurar que el propietario del nodo nunca tenga acceso a los datos procesados en la instancia.</p>
-                    </div>
+                <h2 class="text-4xl font-black mb-8 text-blue-500 italic uppercase">White Paper</h2>
+                <div class="card mb-6">
+                    <h3 class="text-xl font-bold mb-4 uppercase tracking-tighter">Soberanía del Dato</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Nuestra red garantiza que sus procesos de IA operan exclusivamente bajo el marco legal español. Evite la exposición de datos sensibles en nubes extracomunitarias.</p>
                 </div>
             </div>
         </main>
 
-        <footer class="h-12 flex items-center justify-center glass text-[10px] tracking-[0.5em] text-gray-600 shrink-0">
-            © 2026 IBERIA-AI.COM · INFRAESTRUCTURA CORE SOBERANA
-        </footer>
+        <footer class="h-12 flex items-center justify-center glass text-[10px] tracking-[0.6em] text-gray-600 shrink-0 uppercase font-bold">© 2026 IBERIA-AI.COM</footer>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
@@ -123,20 +103,22 @@
         window.onload = function() {
             particlesJS("particles-js", {
                 "particles": {
-                    "number": { "value": 100 },
+                    "number": { "value": 110, "density": { "enable": true, "value_area": 800 } },
                     "color": { "value": "#0070f3" },
-                    "opacity": { "value": 0.3 },
-                    "line_linked": { "enable": true, "distance": 150, "color": "#0070f3", "opacity": 0.2 },
-                    "move": { "enable": true, "speed": 1.2 }
-                }
+                    "shape": { "type": "circle" },
+                    "opacity": { "value": 0.4 },
+                    "size": { "value": 2, "random": true },
+                    "line_linked": { "enable": true, "distance": 150, "color": "#0070f3", "opacity": 0.3, "width": 1 },
+                    "move": { "enable": true, "speed": 1.5, "direction": "none", "random": true, "straight": false, "out_mode": "out", "bounce": false }
+                },
+                "interactivity": { "events": { "onhover": { "enable": true, "mode": "grab" } } },
+                "retina_detect": true
             });
         };
 
         function showSection(id) {
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
             document.getElementById(id).classList.add('active');
-            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-            // Actualizar clase activa en nav si es necesario
         }
     </script>
 </body>
