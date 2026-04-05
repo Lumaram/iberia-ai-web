@@ -13,13 +13,13 @@
         .page-container { position: relative; z-index: 10; height: 100vh; display: flex; flex-direction: column; }
         .glass { background: rgba(10, 20, 40, 0.9); backdrop-filter: blur(12px); border-b: 1px solid rgba(255,255,255,0.05); }
         
-        /* FILTRO LATERAL */
+        /* FILTRO LATERAL LIMPIO */
         .sidebar { width: 240px; border-right: 1px solid #1a1a1a; padding: 20px; background: #050a0f; overflow-y: auto; }
         .filter-group { margin-bottom: 24px; }
         .filter-label { font-size: 10px; font-weight: 800; color: #444; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; display: block; }
         select, input[type="range"] { background: #0d1117; border: 1px solid #222; color: #fff; width: 100%; padding: 6px; border-radius: 4px; font-size: 11px; }
 
-        /* CARDS ESTRECHAS (Densidad +25%) */
+        /* CARDS DENSAS */
         .clore-card { background: #0a0a0a; border: 1px solid #1a1a1a; border-radius: 4px; margin-bottom: 12px; height: 160px; overflow: hidden; transition: border-color 0.2s; }
         .clore-card:hover { border-color: #3b82f6; }
         .card-main { padding: 12px 16px; display: flex; justify-content: space-between; align-items: center; height: 115px; }
@@ -41,11 +41,11 @@
     <div id="particles-js"></div>
 
     <div class="page-container">
-        <header class="h-14 flex items-center justify-between px-8 glass shrink-0">
+        <header class="h-14 flex items-center justify-between px-8 glass shrink-0 sticky top-0 z-50">
             <h1 class="text-lg font-black tracking-tighter text-blue-500 mono">IBERIA-AI.COM</h1>
             <div class="flex items-center space-x-4">
-                <span class="text-[10px] text-gray-500">BALANCE: 0.00€</span>
-                <button class="bg-blue-600 px-4 py-1 rounded text-[10px] font-bold">ENTRAR</button>
+                <span class="text-[10px] text-gray-500 font-bold">BALANCE: 0.00€</span>
+                <button class="bg-blue-600 px-4 py-1 rounded text-[10px] font-bold uppercase hover:bg-blue-700 transition">ENTRAR</button>
             </div>
         </header>
 
@@ -64,8 +64,8 @@
                     <select><option>99%+</option><option>100%</option></select>
                 </div>
                 <div class="filter-group">
-                    <span class="filter-label">Ubicación</span>
-                    <div class="text-[10px] text-blue-400">España 🇪🇸 (RGPD OK)</div>
+                    <span class="filter-label">Estado</span>
+                    <select><option>Disponible</option><option>En Uso</option></select>
                 </div>
             </aside>
 
@@ -74,8 +74,7 @@
                     <span class="text-[10px] text-gray-500 uppercase self-center font-bold">Ordenar por:</span>
                     <select class="!w-auto !text-[10px] font-bold py-1">
                         <option>Más Barato</option><option>Más Caro</option>
-                        <option>Más VRAM</option><option>Menos VRAM</option>
-                        <option>Mayor Alquiler</option><option>Menor Alquiler</option>
+                        <option>Más VRAM</option><option>Mayor Alquiler</option>
                     </select>
                 </div>
 
@@ -85,24 +84,24 @@
                             <div class="flex space-x-4 text-[9px] mb-2 uppercase font-bold tracking-widest text-gray-500">
                                 <span>#00000001</span> <span>Host: <b class="text-white">SERVER-5060TI</b></span> <span class="text-green-500">⏱ 42D 14H</span>
                             </div>
-                            <h3 class="text-xl font-bold text-white mb-2">
+                            <h3 class="text-xl font-bold text-white mb-2 tracking-tight">
                                 <img src="https://upload.wikimedia.org/wikipedia/sco/2/21/Nvidia_logo.svg" class="brand-logo"> 1x RTX 5060 Ti
                             </h3>
                             <div class="grid grid-cols-2 gap-x-8 text-[10px]">
-                                <div><p class="text-blue-400">16GB VRAM GDDR6X</p><p><img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/AMD_Logo.svg" class="brand-logo" style="height:12px"> Ryzen 5 (64GB 3600MHz)</p></div>
-                                <div><p><img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Samsung_Logo.svg" class="brand-logo" style="height:10px"> 1TB NVMe Samsung</p><p class="text-blue-400">Fiabilidad: 100.00%</p></div>
+                                <div><p class="text-blue-400 font-bold">16GB VRAM GDDR6X</p><p><img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/AMD_Logo_Color.svg" class="brand-logo" style="height:14px"> Ryzen 5 (64GB @ 3600MHz)</p></div>
+                                <div><p><img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Samsung_Logo.svg" class="brand-logo" style="height:10px"> 1TB NVMe Samsung</p><p class="text-blue-400 font-bold">Fiabilidad: 100.00%</p></div>
                             </div>
                         </div>
                         <div class="text-right flex items-center">
                             <div class="mr-6">
-                                <div class="price-text">0,85€<span class="text-[10px] text-gray-500">/día</span></div>
+                                <div class="price-text font-mono">0,85€<span class="text-[10px] text-gray-500">/día</span></div>
                                 <button class="rent-btn">ALQUILAR</button>
                             </div>
                             <div class="status-icon pulse text-green-500" title="Preparado">✅</div>
                         </div>
                     </div>
                     <div class="card-footer uppercase font-bold text-gray-600">
-                        <div>RTX 5060 TI</div><div>ENCRIPTADO</div><div>RGPD OK</div><div>43.36, -8.41 <span class="text-blue-500">MAPS</span></div><div>3600 MHz</div><div class="text-yellow-600">180W</div>
+                        <div>RTX 5060 TI</div><div>ENCRIPTADO</div><div>RGPD OK</div><div>ESPAÑA <span class="text-blue-500">MAPS</span></div><div>3600 MHz</div><div class="text-yellow-600 font-mono">180W</div>
                     </div>
                 </div>
 
@@ -112,24 +111,24 @@
                             <div class="flex space-x-4 text-[9px] mb-2 uppercase font-bold text-gray-500">
                                 <span>#00000002</span> <span>Host: <b class="text-white">SERVER-3080TI</b></span> <span class="text-blue-500">⏱ 18D 06H</span>
                             </div>
-                            <h3 class="text-xl font-bold text-white mb-2">
+                            <h3 class="text-xl font-bold text-white mb-2 tracking-tight">
                                 <img src="https://upload.wikimedia.org/wikipedia/sco/2/21/Nvidia_logo.svg" class="brand-logo"> 1x RTX 3080 Ti
                             </h3>
                             <div class="grid grid-cols-2 gap-x-8 text-[10px]">
-                                <div><p class="text-blue-400">12GB VRAM GDDR6X</p><p><img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Intel-logo.svg" class="brand-logo" style="height:12px"> Core i5 (16GB 3200MHz)</p></div>
-                                <div><p><img src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Western_Digital_logo.svg" class="brand-logo" style="height:10px"> 1TB SSD WD</p><p class="text-blue-400">Fiabilidad: 99.98%</p></div>
+                                <div><p class="text-blue-400 font-bold">12GB VRAM GDDR6X</p><p><img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Intel_logo_color.svg" class="brand-logo" style="height:14px"> Core i5 (16GB @ 3200MHz)</p></div>
+                                <div><p><img src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Western_Digital_logo.svg" class="brand-logo" style="height:10px"> 1TB SSD WD</p><p class="text-blue-400 font-bold">Fiabilidad: 99.98%</p></div>
                             </div>
                         </div>
                         <div class="text-right flex items-center">
                             <div class="mr-6">
-                                <div class="price-text">1,20€<span class="text-[10px] text-gray-500">/día</span></div>
+                                <div class="price-text font-mono">1,20€<span class="text-[10px] text-gray-500">/día</span></div>
                                 <button class="rent-btn !bg-gray-800" disabled>EN USO</button>
                             </div>
                             <div class="status-icon rotating text-blue-500" title="Procesando">⚙️</div>
                         </div>
                     </div>
                     <div class="card-footer uppercase font-bold text-gray-600">
-                        <div>RTX 3080 TI</div><div>ENCRIPTADO</div><div>RGPD OK</div><div>40.41, -3.70 <span class="text-blue-500">MAPS</span></div><div>3200 MHz</div><div class="text-yellow-600">350W</div>
+                        <div>RTX 3080 TI</div><div>ENCRIPTADO</div><div>RGPD OK</div><div>ESPAÑA <span class="text-blue-500">MAPS</span></div><div>3200 MHz</div><div class="text-yellow-600 font-mono">350W</div>
                     </div>
                 </div>
 
